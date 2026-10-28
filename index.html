@@ -296,23 +296,32 @@ async function getAIResponse(userMessage) {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-5-5',
         max_tokens: 1000,
         system: PROFILE_CONTEXT,
         messages: history
       })
     });
     const data = await response.json();
-    const reply = data.content && data.content[0] ? data.content[0].text : "Sorry, I could not get a response.";
+    if (!response.ok || data.error) {
+      throw new Error(data.error?.message || `Request failed (${response.status})`);
+    }
+    const reply = (data.content || [])
+      .filter(block => block.type === 'text' && typeof block.text === 'string')
+      .map(block => block.text).join('\n').trim();
+    if (!reply) throw new Error('The assistant returned an empty response.');
     loadingDiv.remove();
     history.push({role: 'assistant', content: reply});
     appendMessage(reply, 'bot');
   } catch(err) {
     loadingDiv.remove();
-    appendMessage('Error: ' + err.message, 'bot');
+    history.pop();
+    console.error('Research assistant request failed:', err);
+    appendMessage('Sorry, the assistant is temporarily unavailable. Please try again shortly.', 'bot');
+  } finally {
+    isLoading = false;
+    document.getElementById('send-btn').disabled = false;
   }
-  isLoading = false;
-  document.getElementById('send-btn').disabled = false;
 }
 
 // Set email links at runtime to bypass server-side obfuscation
