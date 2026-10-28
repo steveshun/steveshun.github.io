@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prof. Zhengguo Sheng – University of Sussex</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0e1a;--surface:#111827;--surface2:#1a2235;--accent:#4fd1c5;--accent2:#f6ad55;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(79,209,197,0.15);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,209,197,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,197,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+  /* HEADER */
+  header{padding:3rem 0 2rem;display:flex;align-items:flex-start;gap:3rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem;animation:fadeUp 0.8s ease both;}
+  .avatar{width:110px;height:110px;border-radius:50%;border:2px solid var(--accent);background:linear-gradient(135deg,#1a2235,#2d3d5a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0;box-shadow:0 0 30px rgba(79,209,197,0.2);}
+  .header-info h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.3rem;}
+  .header-info .role{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;}
+  .header-info .affil{color:var(--muted);font-size:0.92rem;margin-bottom:0.8rem;}
+  .header-info .contact{display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-size:0.85rem;color:var(--muted);margin-bottom:0.8rem;}
+  .header-info .contact a{color:var(--accent);text-decoration:none;}
+  .badges{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .badge{font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.2rem 0.65rem;border-radius:999px;border:1px solid var(--accent);color:var(--accent);letter-spacing:0.04em;}
+
+  /* NAV */
+  nav{display:flex;margin-bottom:2.5rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp 0.8s 0.1s ease both;}
+  nav a{flex:1;text-align:center;padding:0.75rem 0.5rem;text-decoration:none;color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:all 0.2s;border-right:1px solid var(--border);}
+  nav a:last-child{border-right:none;}
+  nav a:hover,nav a.active{background:var(--surface2);color:var(--accent);}
+
+  /* LAYOUT */
+  .main-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+  .col-full{grid-column:1/-1;}
+
+  /* CARDS */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;animation:fadeUp 0.8s 0.2s ease both;}
+  .card:hover{border-color:rgba(79,209,197,0.3);}
+  .card-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--accent2);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+
+  /* RESEARCH TAGS */
+  .rtags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .rtag{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.35rem 0.75rem;font-size:0.8rem;}
+
+  /* LIST ITEMS */
+  .item{display:flex;gap:0.75rem;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;line-height:1.5;}
+  .item:last-child{border-bottom:none;}
+  .item-year{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);min-width:52px;flex-shrink:0;margin-top:2px;}
+  .item-text{flex:1;color:var(--text);}
+  .item-text a{color:var(--accent);text-decoration:none;}
+  .item-text a:hover{text-decoration:underline;}
+
+  /* CONTACT ROW */
+  .crow{display:flex;align-items:center;gap:0.75rem;padding:0.45rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;color:var(--muted);}
+  .crow:last-child{border-bottom:none;}
+  .crow .icon{color:var(--accent);width:18px;text-align:center;flex-shrink:0;}
+  .crow a{color:var(--accent);text-decoration:none;}
+
+  /* STATS */
+  .stats-row{display:flex;gap:1rem;margin-bottom:1rem;}
+  .stat{flex:1;text-align:center;background:var(--surface2);border-radius:8px;padding:0.8rem 0.5rem;border:1px solid var(--border);}
+  .stat .num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent);display:block;}
+  .stat .lbl{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* SECTION HEADINGS inside cards */
+  .sub-heading{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin:1rem 0 0.5rem;padding-bottom:0.3rem;border-bottom:1px solid var(--border);}
+  .sub-heading:first-child{margin-top:0;}
+
+  /* BULLET LIST */
+  ul.clean{list-style:none;padding:0;}
+  ul.clean li{padding:0.4rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;line-height:1.5;}
+  ul.clean li:last-child{border-bottom:none;}
+  ul.clean li::before{content:'→';color:var(--accent);margin-right:0.5rem;font-size:0.75rem;}
+
+  footer{border-top:1px solid var(--border);padding:2rem 0;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:1.5rem;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){header{flex-direction:column;gap:1.5rem;}.header-info h1{font-size:2rem;}.main-grid{grid-template-columns:1fr;}}
+
+  /* AI CHAT */
+  #chat-btn{position:fixed;bottom:2rem;right:2rem;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#38b2ac);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(79,209,197,0.4);z-index:1000;transition:transform 0.2s;animation:pulse 3s infinite;}
+  #chat-btn:hover{transform:scale(1.1);}
+  @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(79,209,197,0.4);}50%{box-shadow:0 4px 32px rgba(79,209,197,0.7);}}
+  #chat-window{position:fixed;bottom:6rem;right:2rem;width:380px;max-height:520px;background:var(--surface);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:999;opacity:0;transform:translateY(20px) scale(0.95);pointer-events:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+  #chat-window.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
+  .chat-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--surface2);display:flex;align-items:center;gap:0.75rem;}
+  .chat-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#38b2ac);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#0a0e1a;font-weight:bold;flex-shrink:0;}
+  .chat-header-info strong{display:block;font-size:0.9rem;}
+  .chat-header-info span{font-size:0.75rem;color:var(--accent);font-family:'DM Mono',monospace;}
+  .chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;scrollbar-width:thin;}
+  .msg{max-width:85%;padding:0.6rem 0.9rem;border-radius:12px;font-size:0.85rem;line-height:1.5;animation:fadeUp 0.3s ease;}
+  .msg.user{background:var(--accent);color:#0a0e1a;align-self:flex-end;border-bottom-right-radius:4px;font-weight:500;}
+  .msg.bot{background:var(--surface2);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px;border:1px solid var(--border);}
+  .msg.bot.loading{color:var(--muted);font-style:italic;}
+  .chat-input-area{padding:0.75rem;border-top:1px solid var(--border);display:flex;gap:0.5rem;}
+  .chat-input-area input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.9rem;color:var(--text);font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;}
+  .chat-input-area input:focus{border-color:var(--accent);}
+  .chat-input-area input::placeholder{color:var(--muted);}
+  .chat-input-area button{background:var(--accent);border:none;border-radius:8px;padding:0.6rem 0.9rem;cursor:pointer;color:#0a0e1a;font-weight:700;font-size:0.9rem;transition:opacity 0.2s;}
+  .chat-input-area button:hover{opacity:0.85;}
+  .chat-input-area button:disabled{opacity:0.4;cursor:not-allowed;}
+  .suggestions{display:flex;flex-wrap:wrap;gap:0.4rem;padding:0 1rem 0.75rem;}
+  .chip{background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:0.3rem 0.7rem;font-size:0.72rem;color:var(--muted);cursor:pointer;transition:all 0.2s;font-family:'DM Mono',monospace;}
+  .chip:hover{border-color:var(--accent);color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <img src="image/Zhengguo.jpg" class="avatar" alt="Prof. Zhengguo Sheng" style="object-fit:cover;width:110px;height:110px;flex-shrink:0;">
+    <div class="header-info">
+      <div class="role">// University of Sussex</div>
+      <h1>Zhengguo Sheng</h1>
+      <div class="affil">Dean of Sussex AI Institute · Professor in Advanced Networks and Communications<br>Department of Engineering and Design · RICHMOND 3A09, Falmer, Brighton, United Kingdom</div>
+      <div class="contact">
+        <span>📞 +44-1273-678295</span>
+        <span>📧 <a id="email1" href="#">z.sheng@sussex.ac.uk</a></span>
+      </div>
+      <div class="badges">
+        <span class="badge">IEEE Senior Member</span>
+        <span class="badge">IET Member</span>
+        <span class="badge">HEA Fellow</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="work.html">Experience</a>
+    <a href="edu.html">Research</a>
+    <a href="pub.html">Publications</a>
+    <a href="demo.html">Demos</a>
+    <a href="team.html">Team</a>
+  </nav>
+
+  <!-- ROW 1: Research + Contact -->
+  <div class="main-grid">
+
+    <div class="card">
+      <div class="card-title">🔬 Research Areas</div>
+      <div class="rtags">
+        <span class="rtag">🚗 Vehicular Communications (V2X)</span>
+        <span class="rtag">📡 In-Vehicle Networks</span>
+        <span class="rtag">🌐 IoT & Wireless Sensor Networks</span>
+        <span class="rtag">📶 IPv6</span>
+        <span class="rtag">🗜️ Compressed Sensing</span>
+        <span class="rtag">⚡ Energy Harvesting</span>
+        <span class="rtag">🏷️ RFID</span>
+        <span class="rtag">☁️ Sensor Cloud</span>
+        <span class="rtag">📱 Mobile Cloud</span>
+        <span class="rtag">📊 Big Data Management</span>
+        <span class="rtag">🔗 Blockchain Security</span>
+        <span class="rtag">🤖 Edge Computing</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📊 At a Glance</div>
+      <div class="stats-row">
+        <div class="stat"><span class="num">105</span><span class="lbl">Journal Papers</span></div>
+        <div class="stat"><span class="num">71</span><span class="lbl">Conf. Papers</span></div>
+        <div class="stat"><span class="num">6</span><span class="lbl">Books</span></div>
+      </div>
+      <div class="crow"><span class="icon">📧</span><a id="email2" href="#">z.sheng@sussex.ac.uk</a></div>
+      <div class="crow"><span class="icon">📞</span><span>+44-1273-678295</span></div>
+      <div class="crow"><span class="icon">📍</span><span>RICHMOND 3A09, Falmer, Brighton, UK</span></div>
+      <div class="crow"><span class="icon">🔗</span><a href="https://scholar.google.com/citations?user=bRzhl0oAAAAJ" target="_blank">Google Scholar</a></div>
+    </div>
+
+  </div>
+
+  <!-- Professional Activities -->
+  <div class="main-grid">
+
+    <!-- Interviews -->
+    <div class="card">
+      <div class="card-title">🎙️ Interviews & Media</div>
+      <div class="item"><span class="item-year">2025</span><span class="item-text"><a href="https://www.zmdforum.org.cn/zjltoT/50d84434806e4716930a7f91e0de604b.htm" target="_blank">IFIE Forum: 12th Ministry of Education Conference on Industry–Education</a></span></div>
+      <div class="item"><span class="item-year">2023</span><span class="item-text"><a href="https://www.prospects.ac.uk/case-studies/introducing-engineering-business-management" target="_blank">Prospects: Introducing Engineering Business Management (EBM) — University of Sussex</a></span></div>
+      <div class="item"><span class="item-year">2019</span><span class="item-text"><a href="https://www.intertraffic.com/news/articles/are-your-systems-safe/" target="_blank">Intertraffic: V2X Security — Are Your Systems Safe?</a></span></div>
+      <div class="item"><span class="item-year">2018</span><span class="item-text"><a href="https://www.igi-global.com/newsroom/archive/inside-scoop-future-hyperconnection/3690/" target="_blank">IGI Global: The Inside Scoop on 5G and a Future of Hyperconnection</a></span></div>
+    </div>
+
+    <!-- Expert Advisory -->
+    <div class="card">
+      <div class="card-title">🧭 Expert Advisory & Committees</div>
+      <div class="sub-heading">Expert Advisory Group</div>
+      <div class="item"><span class="item-year">2021–</span><span class="item-text"><a href="https://www.networldeurope.eu/" target="_blank">Enabling Technologies for Future Vertical Ecosystem Transformation WG</a>, NetWorld Europe</span></div>
+      <div class="item"><span class="item-year">2017–</span><span class="item-text"><a href="https://iot.ieee.org/about/ieee-iot-activities-board.html" target="_blank">IEEE IoT Initiative Activity Board Member</a></span></div>
+      <div class="sub-heading">Committees & Representatives</div>
+      <div class="item"><span class="item-year">2022–</span><span class="item-text"><a href="https://vtsociety.org/committee/liaisons-representatives" target="_blank">IEEE VTS Liaison to IEEE RFID Council</a></span></div>
+      <div class="item"><span class="item-year">2014–</span><span class="item-text">Technical Committee, ELSEVIER Computer Communications (COMCOM)</span></div>
+      <div class="item"><span class="item-year">2014–</span><span class="item-text">Member, IoT Standardization Research Groups at <a href="http://community.comsoc.org/groups" target="_blank">IEEE ComSoc Communities</a></span></div>
+    </div>
+
+
+
+  </div>
+
+  <footer>
+    Prof. Zhengguo Sheng · University of Sussex · © 2026 &nbsp;·&nbsp; 💬 Ask the AI agent anything about my work
+  </footer>
+</div>
+
+<!-- AI Chat Button -->
+<button id="chat-btn" onclick="toggleChat()" title="Ask AI about Prof. Sheng">💬</button>
+
+<!-- AI Chat Window -->
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-av">AI</div>
+    <div class="chat-header-info">
+      <strong>Research Assistant</strong>
+      <span>// Powered by Claude · Ask me anything</span>
+    </div>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="msg bot">Hi! I'm Prof. Sheng's AI assistant. Ask me about his research, publications, projects, awards, or anything else! 👋</div>
+  </div>
+  <div class="suggestions" id="suggestions">
+    <span class="chip" onclick="sendSuggestion('What are his main research areas?')">Research areas</span>
+    <span class="chip" onclick="sendSuggestion('What funded projects has he led?')">Funded projects</span>
+    <span class="chip" onclick="sendSuggestion('Tell me about the SEEDS project')">SEEDS project</span>
+    <span class="chip" onclick="sendSuggestion('What awards has he won?')">Awards</span>
+  </div>
+  <div class="chat-input-area">
+    <input id="chat-input" type="text" placeholder="Ask something..." onkeydown="if(event.key==='Enter') sendMessage()"/>
+    <button id="send-btn" onclick="sendMessage()">→</button>
+  </div>
+</div>
+
+<script>
+const PROFILE_CONTEXT = `You are an AI assistant on Prof. Zhengguo Sheng's academic website at the University of Sussex. Answer questions about him accurately and helpfully. Be concise but informative.
+
+Name: Prof. Zhengguo Sheng
+Position: Dean of Sussex AI Institute; Professor in Advanced Networks and Communications
+Department: Engineering and Design, University of Sussex, Brighton, UK
+Email: z.sheng@sussex.ac.uk | Phone: +44-1273-678295
+Memberships: IEEE Senior Member, IET, Fellow of HEA
+
+RESEARCH: Vehicular communications (V2X), IoT, wireless sensor networks, IPv6, compressed sensing, energy harvesting, RFID, cloud/edge computing, blockchain security, 5G, autonomous vehicles.
+
+KEY PROJECTS: H2020 SEEDS (2021-2025, Coordinator), Royal Academy of Engineering (2023-25), Royal Society Kan Tong Po Fellowship 2020, EPSRC EP/P025862/1 (2017-18), NERC 2022 IoT flood mitigation, HEIF 2023 EV charging, KKU 2025 AI energy management.
+
+PUBLICATIONS: 105 journal papers, 71 conference papers, 6 books, 2 patents, 1 standard. Highly cited papers include IEEE IoT survey (top 1% ESI), IEEE Wireless Communication Magazine 2013.
+
+AWARDS: First Prize Educational Achievement Award Zhejiang Provincial Graduate Education Society 2025, Best Paper ICUS 2021, Emerging Research Award Sussex 2017, HEA Fellow 2017, IEEE Outstanding Service Award 2015, Best Paper IoV 2016, Best Demo SECON 2016, IBM/ITA Studentship 2007-2011.
+
+EDITORIAL: IEEE Journal of RFID (2022-), Electronics MDPI (2021-), Frontiers in Future Transportation (2020-), IEEE Access (2018-), Ad Hoc Networks Elsevier (2017-).
+
+If asked something not covered above, suggest contacting Prof. Sheng at z.sheng@sussex.ac.uk.`;
+
+let chatOpen = false, isLoading = false, history = [];
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chat-window').classList.toggle('open', chatOpen);
+  if (chatOpen) document.getElementById('chat-input').focus();
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text || isLoading) return;
+  input.value = '';
+  appendMessage(text, 'user');
+  document.getElementById('suggestions').style.display = 'none';
+  await getAIResponse(text);
+}
+
+function sendSuggestion(t) {
+  document.getElementById('chat-input').value = t;
+  sendMessage();
+}
+
+function appendMessage(text, type) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+async function getAIResponse(userMessage) {
+  isLoading = true;
+  document.getElementById('send-btn').disabled = true;
+  const loadingDiv = appendMessage('Thinking...', 'bot loading');
+  history.push({role: 'user', content: userMessage});
+  try {
+    const response = await fetch('https://jolly-river-d73d.steveshun.workers.dev/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: PROFILE_CONTEXT,
+        messages: history
+      })
+    });
+    const data = await response.json();
+    const reply = data.content && data.content[0] ? data.content[0].text : "Sorry, I could not get a response.";
+    loadingDiv.remove();
+    history.push({role: 'assistant', content: reply});
+    appendMessage(reply, 'bot');
+  } catch(err) {
+    loadingDiv.remove();
+    appendMessage('Error: ' + err.message, 'bot');
+  }
+  isLoading = false;
+  document.getElementById('send-btn').disabled = false;
+}
+
+// Set email links at runtime to bypass server-side obfuscation
+(function(){
+  const u='z.sheng';const d='sussex.ac.uk';const e=u+'@'+d;
+  ['email1','email2'].forEach(function(id){
+    const el=document.getElementById(id);
+    if(el){el.href='mailto:'+e;el.textContent=e;}
+  });
+})();
+</script>
+</body>
+</html>

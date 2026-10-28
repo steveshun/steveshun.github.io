@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Demos – Prof. Zhengguo Sheng</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0e1a;--surface:#111827;--surface2:#1a2235;--accent:#4fd1c5;--accent2:#f6ad55;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(79,209,197,0.15);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,209,197,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,197,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+  header{padding:3rem 0 2rem;display:flex;align-items:flex-start;gap:3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;animation:fadeUp 0.8s ease both;}
+  .avatar{width:110px;height:110px;border-radius:50%;border:2px solid var(--accent);background:linear-gradient(135deg,#1a2235,#2d3d5a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0;box-shadow:0 0 30px rgba(79,209,197,0.2);text-decoration:none;}
+  .header-info h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.4rem;}
+  .header-info .title{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;}
+  .header-info .sub{color:var(--muted);font-size:0.95rem;}
+
+  nav{display:flex;margin-bottom:3rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp 0.8s 0.1s ease both;}
+  nav a{flex:1;text-align:center;padding:0.75rem 0.5rem;text-decoration:none;color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:all 0.2s;border-right:1px solid var(--border);}
+  nav a:last-child{border-right:none;}
+  nav a:hover,nav a.active{background:var(--surface2);color:var(--accent);}
+
+  .section-header{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent2);border-bottom:2px solid var(--border);padding-bottom:0.6rem;margin:0 0 1.5rem;display:flex;align-items:center;gap:0.75rem;animation:fadeUp 0.8s 0.15s ease both;}
+
+  /* RESEARCH AREAS */
+  .rtags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:3rem;animation:fadeUp 0.8s 0.2s ease both;}
+  .rtag{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;font-size:0.83rem;transition:border-color 0.2s;}
+  .rtag:hover{border-color:rgba(79,209,197,0.4);}
+
+  /* CARDS */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:3rem;animation:fadeUp 0.8s 0.2s ease both;}
+
+  /* LIST ITEMS */
+  .item{display:flex;gap:0.75rem;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;line-height:1.5;}
+  .item:last-child{border-bottom:none;}
+  .item-year{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);min-width:58px;flex-shrink:0;margin-top:2px;}
+  .item-text{flex:1;color:var(--text);}
+  .item-text a{color:var(--accent);text-decoration:none;}
+  .item-text a:hover{text-decoration:underline;}
+
+  footer{border-top:1px solid var(--border);padding:2rem 0;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:1rem;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){header{flex-direction:column;gap:1.5rem;}.header-info h1{font-size:2rem;}}
+
+  .members{list-style:none;}
+  .member{padding:1rem 0;border-bottom:1px solid var(--border);}
+  .member:first-child{padding-top:0;}
+  .member:last-child{padding-bottom:0;border-bottom:none;}
+  .member h3{font-size:1rem;font-weight:500;color:var(--text);margin-bottom:0.25rem;}
+  .member p{color:var(--muted);font-size:0.88rem;}
+  nav a:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;}
+  @media(max-width:700px){.container{padding:0 1rem;}nav{flex-wrap:wrap;}nav a{flex:1 0 33.333%;}.card{padding:1.25rem;}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;}}
+
+  .demo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:2rem;}
+  .demo-card h2{font-family:'Playfair Display',serif;color:var(--accent2);font-size:1.35rem;line-height:1.4;margin-bottom:1rem;}
+  .demo-card p,.demo-card li{font-size:0.92rem;color:var(--muted);}
+  .demo-card p{margin:0.75rem 0;}
+  .demo-card ul{padding-left:1.25rem;margin:0.75rem 0 1.25rem;}
+  .demo-card li{margin:0.5rem 0;}
+  .demo-card a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere;}
+  .demo-card img{display:block;max-width:100%;height:auto;margin:1rem auto;border-radius:8px;}
+  .video-frame{width:100%;aspect-ratio:16/9;margin:1.25rem 0;background:var(--bg);border-radius:8px;overflow:hidden;}
+  .video-frame iframe{display:block;width:100%;height:100%;border:0;}
+  @media(max-width:700px){.demo-card{padding:1rem;}.demo-card h2{font-size:1.15rem;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <img src="image/Zhengguo.jpg" class="avatar" alt="Prof. Zhengguo Sheng" style="object-fit:cover;width:110px;height:110px;flex-shrink:0;">
+    <div class="header-info">
+      <div class="title">// Demos</div>
+      <h1>Zhengguo Sheng</h1>
+      <div class="sub">Dean of Sussex AI Institute · Professor in Advanced Networks and Communications · University of Sussex</div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="work.html">Experience</a>
+    <a href="edu.html">Research</a>
+    <a href="pub.html">Publications</a>
+    <a href="demo.html" class="active" aria-current="page">Demos</a>
+    <a href="team.html">Team</a>
+  </nav>
+
+  <main>
+  <section class="demo-card">
+<h2>Wireless robotic teleoperation system for remote physical therapy (2022 @Sussex)</h2>
+<ul>
+<li><p>The focus is to disrupt the occupational therapy and assistant solution by introducing a wireless robotic teleoperation system. The proposed robotic system enables remote physical therapy without real physical contacts between the therapist and user (or patient). </p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/7Yh_x5OhytM" title="Wireless robotic teleoperation system for remote physical therapy (2022 @Sussex)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>IoT application for biodiversity monitoring using acoustic sounds (2019 @Sussex)</h2>
+<ul>
+<li><p>A new application of wireless acoustic sensor networks in remote monitoring.</p>
+</li>
+<li><p>Apply lightweigt IoT protocol stack (6lowpan/RPL/CoAP) and edge computing to minimize data transmission.</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/--t43tiByp4" title="IoT application for biodiversity monitoring using acoustic sounds (2019 @Sussex)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>World Intelligent Driving Challenge (WIDC) (2018 @Sussex)</h2>
+<ul>
+<li><p>Sussex team joining with Beihang University to attend the World Intelligent Driving Challenge (WIDC) 2018 in Tianjin, China.</p>
+</li>
+<li><p>Sussex team contributed to the front camera sensing and line scanning.</p>
+</li>
+<li><p>The collaboration is sponsored by Royal Society International Exchange.</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/R6UHyknjxls" title="World Intelligent Driving Challenge (WIDC) (2018 @Sussex)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>V2I ccommunication system (2018 @Sussex)</h2>
+<ul>
+<li><p>Implementation of vehicle-to-infrastructure (V2I) communications between cars and traffic light</p>
+</li>
+<li><p>V2I communications based on IEEE 802.11p</p>
+</li>
+<li><p>Vehicle to smart phone communication based on Bluetooth</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/4-ltseE1GMs" title="V2I ccommunication system (2018 @Sussex)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>Intelligent car development system (2018 @Sussex, NXP)</h2>
+<ul>
+<li><p>Car model platform based on NXP automotive MCU</p>
+</li>
+<li><p>Intelligent car tracking algorithm applied on line scanner sensors</p>
+</li>
+<li><p>Centralized control and optimization of motor, steering servo and sensing systems.</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/8ZT4_aIJ4MM" title="Intelligent car development system (2018 @Sussex, NXP)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>Large scale simulation for IoT (2016 @Sussex, BUPT)</h2>
+<ul>
+<li><p>Implementation of full IPv6 protocol stack (6LowPAN/IPv6/RPL/CoAP)</p>
+</li>
+<li><p>Up to 500 nodes in a single network</p>
+</li>
+<li><p>Routing objective functions: Hop, ETX, RSSI-ETX</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/sB9QjhIH6kM" title="Large scale simulation for IoT (2016 @Sussex, BUPT)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>Connected vehicles in smart cities (2016 @Sussex)</h2>
+<ul>
+<li><p>Connectivity between vehicles using DSRC (IEEE 802.11p)</p>
+</li>
+<li><p>Periodic broadcasting of Safety Messages</p>
+</li>
+<li><p>Applications in public safety services, including emergency vehicles/ambulance transport</p>
+</li>
+<li><p>Large scale simulation in the City of Brighton</p>
+</li>
+<li><p>Best Demo Award, 3rd place, IEEE SECON 2016</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/ftB0iQ-0GxM" title="Connected vehicles in smart cities (2016 @Sussex)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>Intelligent sensor data and mobile cloud integration for context awareness vehicular applications (2014 @UBC)</h2>
+<ul>
+<li><p>What's this? A mobile application that integrates both motion detection sensor and OBD data to help drivers to combat fatigue and negative emotions during driving. </p>
+</li>
+<li><p>Techniques at-a-glance:                              </p>
+<ul>
+<li><p>SQLite database and lightweight ontology computation methods for storing and interpreting the integrated sensor data and mobile devices.     </p>
+</li>
+<li><p>RESTful web service, Apache ODE, JBoss jBPM and a series of open source packages for running the cloud platform to achieve efficient communication and computation with mobile devices.</p>
+</li></ul>
+</li>
+<li><p>Download <a href="https://play.google.com/store/apps/details?id=com.safedj"><tt>Andriod Application</tt></a> and enjoy!</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/t-kZtNmMMj0" title="Intelligent sensor data and mobile cloud integration for context awareness vehicular applications (2014 @UBC)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<p>Viewers from mainland China can refer the video from <a href="http://v.youku.com/v_show/id_XODAzMDI2MDIw.html">here</a>.</p>
+  </section>
+
+  <section class="demo-card">
+<h2>MAC Protocol Design for Vehicular Power Line Communication (VPLC) (2014-Now @UBC)</h2>
+<ul>
+<li><p>Motivation: In a car, the number of &ldquo;intelligent&rdquo; sensors, computers and electronic control unit (ECU), is continuously increasing. Increase the number of dedicated wires, cables, shielded cables. Weight, cost and reliability (connectors).
+Question: Why putting an additional cable between two ECUs for exchanging data since there are already connected to the DC power line.</p>
+</li>
+<li><p>Our solution: Use the DC PL as a physical support for the transmission. Thanks to the development of X-by-wire technique (replacing mechanical transmission by data transmission).</p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/hiWQRSHYZdY" title="MAC Protocol Design for Vehicular Power Line Communication (VPLC) (2014-Now @UBC)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<p>Viewers from mainland China can refer the video from <a href="http://v.youku.com/v_show/id_XNzIxMzc4ODQ4.html">here</a>.</p>
+  </section>
+
+  <section class="demo-card">
+<h2>Surfing the Internet-of-Things (2011-Now @Orange, UBC)</h2>
+<ul>
+<li><p>Motivation: To revolutionize the design of Internet-of-Things (IoT) and enable universal connectivity and management to resource constrained devices, it is advantageous to develop lightweight radio and IPv6 protocol stack for sensor networks and thus bring more value-added services into our smart plans.</p>
+</li>
+<li><p>What is it? A full IPv6 solution to realize easy access from a smart phone or PC to a sensor device via home gateway. 
+Restful interface for data access: Software development on OpenWRT firmware of gateway to realize HTTP/CoAP proxy for remote RESTful access.<img src="image/iot.png" width=1300/> <br /></p>
+</li>
+</ul>
+  </section>
+
+  <section class="demo-card">
+<h2>Big data analysis in social networks (2012 @Orange)</h2>
+<ul>
+<li><p>Motivation: Visualize urban mobility combined with different industries: mapping population, transportation, environment, telecommunication, and social data to facilitate interdisciplinary research and communication for city operators and urban planners, leading to collaborative innovation in city development and service improvement.</p>
+</li>
+<li><p>Scale of data: 18 hours SMS volume, Over 10000 base stations in Beijing.</p>
+</li>
+<li><p>Copyright by Orange. </p>
+</li>
+</ul>
+<div class="video-frame"><iframe src="https://player.youku.com/embed/XNzM1MjE4MjA0" title="Big data analysis in social networks (2012 @Orange)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  </section>
+
+  <section class="demo-card">
+<h2>Cross-layer design of wireless cooperative communications (2011@Imperial College, IBM)</h2>
+<p><img src="image/cross_layer.png" width=380/> </p>
+<div class="video-frame"><iframe src="https://www.youtube.com/embed/N4BtAI3Edwc" title="Cross-layer design of wireless cooperative communications (2011@Imperial College, IBM)" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<p>Viewers from mainland China can refer the video from <a href="http://v.youku.com/v_show/id_XNzIwOTE4MjM2.html">here</a>.</p>
+  </section>
+  </main>
+  <footer>Prof. Zhengguo Sheng · University of Sussex · © 2026</footer>
+</div>
+</body>
+</html>

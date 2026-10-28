@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experience & Education – Prof. Zhengguo Sheng</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0e1a;--surface:#111827;--surface2:#1a2235;--accent:#4fd1c5;--accent2:#f6ad55;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(79,209,197,0.15);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,209,197,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,197,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+  header{padding:3rem 0 2rem;display:flex;align-items:flex-start;gap:3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;animation:fadeUp 0.8s ease both;}
+  .avatar{width:110px;height:110px;border-radius:50%;border:2px solid var(--accent);background:linear-gradient(135deg,#1a2235,#2d3d5a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0;box-shadow:0 0 30px rgba(79,209,197,0.2);text-decoration:none;}
+  .header-info h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.4rem;}
+  .header-info .title{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;}
+  .header-info .sub{color:var(--muted);font-size:0.95rem;}
+
+  nav{display:flex;margin-bottom:3rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp 0.8s 0.1s ease both;}
+  nav a{flex:1;text-align:center;padding:0.75rem 0.5rem;text-decoration:none;color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:all 0.2s;border-right:1px solid var(--border);}
+  nav a:last-child{border-right:none;}
+  nav a:hover,nav a.active{background:var(--surface2);color:var(--accent);}
+
+  .section-header{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent2);border-bottom:2px solid var(--border);padding-bottom:0.6rem;margin:0 0 1.5rem;display:flex;align-items:center;gap:0.75rem;animation:fadeUp 0.8s 0.15s ease both;}
+
+  .timeline{position:relative;padding-left:2rem;margin-bottom:3rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),rgba(79,209,197,0.1));}
+
+  .titem{position:relative;margin-bottom:1.2rem;animation:fadeUp 0.8s 0.2s ease both;}
+  .titem::before{content:'';position:absolute;left:-2.4rem;top:1.2rem;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 8px rgba(79,209,197,0.5);}
+
+  .tcard{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.6rem;transition:border-color 0.2s,transform 0.15s;}
+  .tcard:hover{border-color:rgba(79,209,197,0.4);transform:translateX(4px);}
+
+  .tcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;}
+  .tcard-title{font-size:1rem;font-weight:600;color:var(--text);}
+  .tcard-title strong{color:var(--accent);}
+  .tcard-period{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent2);background:rgba(246,173,85,0.1);border:1px solid rgba(246,173,85,0.25);padding:0.2rem 0.6rem;border-radius:999px;white-space:nowrap;}
+  .tcard-sub{font-size:0.83rem;color:var(--muted);margin-bottom:0.75rem;font-style:italic;}
+
+  .tcard ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.35rem;}
+  .tcard ul li{font-size:0.83rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.55;}
+  .tcard ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:0.72rem;}
+
+  /* Education uses slightly different accent */
+  .edu .titem::before{background:var(--accent2);box-shadow:0 0 8px rgba(246,173,85,0.5);}
+  .edu .timeline::before{background:linear-gradient(to bottom,var(--accent2),rgba(246,173,85,0.1));}
+  .edu .tcard{border-color:rgba(246,173,85,0.15);}
+  .edu .tcard:hover{border-color:rgba(246,173,85,0.4);}
+  .edu .tcard-period{color:var(--accent);background:rgba(79,209,197,0.1);border-color:rgba(79,209,197,0.25);}
+  .degree{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--accent2);font-weight:700;}
+
+  footer{border-top:1px solid var(--border);padding:2rem 0;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:1rem;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){header{flex-direction:column;gap:1.5rem;}.header-info h1{font-size:2rem;}.tcard-top{flex-direction:column;}.timeline{padding-left:1.25rem;}.titem::before{left:-1.65rem;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <img src="image/Zhengguo.jpg" class="avatar" alt="Prof. Zhengguo Sheng" style="object-fit:cover;width:110px;height:110px;flex-shrink:0;">
+    <div class="header-info">
+      <div class="title">// Experience & Education</div>
+      <h1>Zhengguo Sheng</h1>
+      <div class="sub">Dean of Sussex AI Institute · Professor in Advanced Networks and Communications · University of Sussex</div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="work.html" class="active">Experience</a>
+    <a href="edu.html">Research</a>
+    <a href="pub.html">Publications</a>
+    <a href="demo.html">Demos</a>
+    <a href="team.html">Team</a>
+  </nav>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section-header">💼 Work Experience</div>
+  <div class="timeline">
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title">Professor · <strong>University of Sussex</strong>, Brighton, UK</div>
+          <span class="tcard-period">2015 – Present</span>
+        </div>
+        <div class="tcard-sub">Dean of Sussex AI Institute · Department of Engineering and Design</div>
+        <ul>
+          <li>Leading research in V2X communications, IoT, blockchain security and edge computing.</li>
+          <li>Coordinator of H2020-MSCA-RISE SEEDS project (2021–2025).</li>
+          <li>Principal investigator of multiple EPSRC, Royal Society, Royal Academy of Engineering and industry-funded projects.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title">Research Associate · <strong>University of British Columbia</strong>, BC, Canada</div>
+          <span class="tcard-period">Dec 2013 – Mar 2015</span>
+        </div>
+        <div class="tcard-sub">Working with Prof. Victor C.M. Leung and Prof. Lutz Lampe</div>
+        <ul>
+          <li>Cross academic-industry research in Machine-to-Machine, Internet-of-Things, mobile cloud computing and power line communication.</li>
+          <li>Principal investigator of multiple research projects in China, EU and Canada with funding supports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title">Senior Researcher & Project Manager · <strong>Orange Labs</strong>, France Telecom, China</div>
+          <span class="tcard-period">Jun 2011 – Feb 2014</span>
+        </div>
+        <ul>
+          <li>Led research activities in M2M connectivity, device management, IT enabler platform and smart cities.</li>
+          <li>Coordinated Orange and Asia telcos on NFC-SWP partnership.</li>
+          <li>Participated in standardisation activities including oneM2M, OMA and CCSA.</li>
+          <li>Conducted project management engagements including budget management and project delivery.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title">Summer Intern · <strong>IBM T. J. Watson Research Center</strong>, NY, USA</div>
+          <span class="tcard-period">Sep 2009 – Dec 2009</span>
+        </div>
+        <div class="tcard-sub">Working with Dr. Bong-Jun Ko and Dr. Kang-won Lee</div>
+        <ul>
+          <li>Investigated mobility issues for wireless cooperative networks and published a paper within a short time period.</li>
+          <li>Involved in the program test and launch of IBM Policy Management Library.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title">Summer Intern · <strong>U.S. Army Research Laboratory (ARL)</strong>, Adelphi, MD, USA</div>
+          <span class="tcard-period">Aug 2009 – Sep 2009</span>
+        </div>
+        <div class="tcard-sub">Working with Dr. Ananthram Swami</div>
+        <ul>
+          <li>Identified new research problems and determined fundamental performance limits in military mobile multi-hop ad hoc wireless networks.</li>
+          <li>Collaborated with the wireless networking group to enhance power control of cooperative communication for military requirements.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section-header">🎓 Education</div>
+  <div class="timeline edu">
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title"><span class="degree">Ph.D.</span> · Electrical and Electronic Engineering · <strong>Imperial College London</strong>, UK</div>
+          <span class="tcard-period">Oct 2007 – May 2011</span>
+        </div>
+        <ul>
+          <li>Thesis: Cooperative Wireless Networks</li>
+          <li>Advisor: Professor Kin K. Leung</li>
+          <li>Full scholarship funded by U.K. and U.S. government (IBM/ITA Project).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title"><span class="degree">M.S.</span> with Distinction · Communication and Signal Processing · <strong>Imperial College London</strong>, UK</div>
+          <span class="tcard-period">Oct 2006 – Oct 2007</span>
+        </div>
+        <ul>
+          <li>Thesis: Quality-of-Service Routing Protocol for Cooperative Networks</li>
+          <li>Supervisor: Professor Kin K. Leung</li>
+          <li>Courses: Advanced Communication Theory, Mobile Communication, Information Theory, Probability and Stochastic Process.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="titem">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="tcard-title"><span class="degree">B.Sc.</span> · Communication Engineering · <strong>University of Electronic Science and Technology of China</strong></div>
+          <span class="tcard-period">Sep 2002 – Aug 2006</span>
+        </div>
+        <ul>
+          <li>Department of Communication Engineering</li>
+          <li>Outstanding student and top 5% graduate.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Prof. Zhengguo Sheng · University of Sussex · © 2026
+  </footer>
+</div>
+</body>
+</html>

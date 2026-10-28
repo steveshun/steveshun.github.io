@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Publications – Prof. Zhengguo Sheng</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root { --bg:#0a0e1a;--surface:#111827;--surface2:#1a2235;--accent:#4fd1c5;--accent2:#f6ad55;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(79,209,197,0.15); }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,209,197,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,197,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+  header{padding:3rem 0 2rem;display:flex;align-items:flex-start;gap:3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;animation:fadeUp 0.8s ease both;}
+  .avatar{width:110px;height:110px;border-radius:50%;border:2px solid var(--accent);background:linear-gradient(135deg,#1a2235,#2d3d5a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0;box-shadow:0 0 30px rgba(79,209,197,0.2);text-decoration:none;}
+  .header-info h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.4rem;}
+  .header-info .title{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;}
+  .header-info .sub{color:var(--muted);font-size:0.95rem;line-height:1.6;}
+  nav{display:flex;margin-bottom:3rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp 0.8s 0.1s ease both;}
+  nav a{flex:1;text-align:center;padding:0.75rem 0.5rem;text-decoration:none;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:all 0.2s;border-right:1px solid var(--border);}
+  nav a:last-child{border-right:none;}
+  nav a:hover,nav a.active{background:var(--surface2);color:var(--accent);}
+  .stats-bar{display:flex;gap:1px;margin-bottom:2rem;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;animation:fadeUp 0.8s 0.15s ease both;}
+  .stat-cell{flex:1;background:var(--surface);padding:1.2rem 1rem;text-align:center;}
+  .stat-cell .num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--accent);display:block;}
+  .stat-cell .label{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.2rem;}
+  .search-box{display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;animation:fadeUp 0.8s 0.18s ease both;}
+  .search-box input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.65rem 1rem;color:var(--text);font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s;}
+  .search-box input:focus{border-color:var(--accent);}
+  .search-box input::placeholder{color:var(--muted);}
+  .filter-bar{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;animation:fadeUp 0.8s 0.22s ease both;}
+  .filter-btn{font-family:'DM Mono',monospace;font-size:0.75rem;padding:0.4rem 1rem;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;transition:all 0.2s;letter-spacing:0.04em;}
+  .filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#0a0e1a;font-weight:600;}
+  .section-header{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--accent2);border-bottom:2px solid var(--border);padding-bottom:0.6rem;margin:2.5rem 0 1.2rem;display:flex;align-items:center;gap:0.75rem;}
+  .section-count{font-family:'DM Mono',monospace;font-size:0.7rem;background:var(--surface2);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:999px;color:var(--muted);}
+  .pub-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin-bottom:0.6rem;transition:border-color 0.2s,transform 0.15s;display:flex;gap:0.9rem;align-items:flex-start;}
+  .pub-card:hover{border-color:rgba(79,209,197,0.4);transform:translateX(3px);}
+  .pub-num{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);min-width:32px;margin-top:3px;opacity:0.7;flex-shrink:0;}
+  .pub-body{flex:1;}
+  .pub-title{font-size:0.88rem;font-weight:500;color:var(--text);line-height:1.45;margin-bottom:0.3rem;}
+  .pub-title a{color:var(--text);text-decoration:none;}
+  .pub-title a:hover{color:var(--accent);}
+  .pub-authors{font-size:0.77rem;color:var(--muted);margin-bottom:0.25rem;line-height:1.4;}
+  .me{color:var(--accent);font-weight:600;}
+  .pub-venue{font-family:'DM Mono',monospace;font-size:0.71rem;color:var(--accent2);}
+  .badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.62rem;padding:0.1rem 0.45rem;border-radius:4px;margin-left:0.4rem;vertical-align:middle;}
+  .badge-cited{background:rgba(246,173,85,0.15);border:1px solid rgba(246,173,85,0.35);color:var(--accent2);}
+  .badge-award{background:rgba(79,209,197,0.12);border:1px solid rgba(79,209,197,0.3);color:var(--accent);}
+  .book-card{background:var(--surface);border:1px solid rgba(160,120,255,0.2);border-radius:10px;padding:1rem 1.2rem;margin-bottom:0.6rem;display:flex;gap:0.9rem;transition:border-color 0.2s;}
+  .book-card:hover{border-color:rgba(160,120,255,0.5);}
+  .book-num{font-family:'DM Mono',monospace;font-size:0.7rem;color:#b39ddb;min-width:32px;margin-top:3px;flex-shrink:0;}
+  .book-meta{font-family:'DM Mono',monospace;font-size:0.71rem;color:#b39ddb;}
+  .no-results{text-align:center;color:var(--muted);padding:4rem;font-family:'DM Mono',monospace;font-size:0.85rem;}
+  footer{border-top:1px solid var(--border);padding:2rem 0;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:3rem;}
+  footer a{color:var(--accent);text-decoration:none;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){header{flex-direction:column;gap:1.5rem;}.header-info h1{font-size:2rem;}.stats-bar{flex-wrap:wrap;}}
+  .extra-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:2.5rem;}
+  .extra-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--accent2);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem;}
+  .sub-h{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;padding-bottom:0.3rem;border-bottom:1px solid var(--border);}
+  .ei{display:flex;gap:0.75rem;padding:0.45rem 0;border-bottom:1px solid var(--border);font-size:0.83rem;line-height:1.5;}
+  .ei:last-child{border-bottom:none;}
+  .ei-yr{font-family:'DM Mono',monospace;font-size:0.71rem;color:var(--accent);min-width:48px;flex-shrink:0;margin-top:2px;}
+  .ei a{color:var(--text);text-decoration:none;}
+  .ei a:hover{color:var(--accent);}
+  @media(max-width:700px){.two-col{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <img src="image/Zhengguo.jpg" class="avatar" alt="Prof. Zhengguo Sheng" style="object-fit:cover;width:110px;height:110px;flex-shrink:0;">
+    <div class="header-info">
+      <div class="title">// Publications</div>
+      <h1>Zhengguo Sheng</h1>
+      <div class="sub">
+        105 journal papers &nbsp;·&nbsp; 71 conference papers &nbsp;·&nbsp; 6 books &nbsp;·&nbsp; 2 patents &nbsp;·&nbsp; 1 standard<br>
+        <a href="https://scholar.google.com/citations?user=bRzhl0oAAAAJ" target="_blank" style="color:var(--accent)">Google Scholar</a> &nbsp;·&nbsp;
+        <a href="https://dblp.org/pid/55/3503.html" target="_blank" style="color:var(--accent)">DBLP</a> &nbsp;·&nbsp;
+        <a href="https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=%22Authors%22:%22Zhengguo%20Sheng%22" target="_blank" style="color:var(--accent)">IEEE Xplore</a>
+      </div>
+    </div>
+  </header>
+  <nav>
+    <a href="index.html">Home</a><a href="work.html">Experience</a><a href="edu.html">Research</a>
+    <a href="pub.html" class="active">Publications</a><a href="demo.html">Demos</a><a href="team.html">Team</a>
+  </nav>
+  <div class="stats-bar">
+    <div class="stat-cell"><span class="num">105</span><span class="label">Journals</span></div>
+    <div class="stat-cell"><span class="num">71</span><span class="label">Conferences</span></div>
+    <div class="stat-cell"><span class="num">6</span><span class="label">Books</span></div>
+    <div class="stat-cell"><span class="num">2</span><span class="label">Patents</span></div>
+    <div class="stat-cell"><span class="num">1</span><span class="label">Standard</span></div>
+  </div>
+  <div class="search-box">
+    <span style="color:var(--muted)">🔍</span>
+    <input type="text" id="search-input" placeholder="Search by title, author, venue..." oninput="applyFilters()"/>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn" onclick="setFilter('journal',this)">Journals</button>
+    <button class="filter-btn" onclick="setFilter('conference',this)">Conferences</button>
+    <button class="filter-btn" onclick="setFilter('books',this)">Books</button>
+    <button class="filter-btn" onclick="setFilter('v2x',this)">V2X / Vehicular</button>
+    <button class="filter-btn" onclick="setFilter('iot',this)">IoT</button>
+    <button class="filter-btn" onclick="setFilter('rfid',this)">RFID</button>
+    <button class="filter-btn" onclick="setFilter('blockchain',this)">Blockchain</button>
+    <button class="filter-btn" onclick="setFilter('edge',this)">Edge / Cloud</button>
+    <button class="filter-btn" onclick="setFilter('award',this)">🏆 Award Papers</button>
+  </div>
+  <div id="pub-list"></div>
+  <!-- Editorial Board & Conference Organisation -->
+  <div class="extra-card">
+    <div class="extra-title">📝 Editorial Board &amp; Conference Organisation</div>
+    <div class="two-col">
+      <div>
+        <div class="sub-h">Editorial Board</div>
+        <div class="ei"><span class="ei-yr">2022–</span><span><a href="https://www.ieee-rfid.org/" target="_blank">IEEE Journal of RFID</a></span></div>
+        <div class="ei"><span class="ei-yr">2021–</span><span><a href="https://www.mdpi.com/journal/electronics/sectioneditors/networks" target="_blank">Network Section Editor, Electronics (MDPI)</a></span></div>
+        <div class="ei"><span class="ei-yr">2020–</span><span><a href="https://loop.frontiersin.org/people/976180/overview" target="_blank">Associate Editor, Frontiers in Future Transportation</a></span></div>
+        <div class="ei"><span class="ei-yr">2018–</span><span>IEEE Access</span></div>
+        <div class="ei"><span class="ei-yr">2017–</span><span>AD HOC NETWORKS (Elsevier)</span></div>
+        <div class="ei"><span class="ei-yr">2015–</span><span><a href="http://www.ieee-connected-vehicles.org/" target="_blank">IEEE/VTS Connected Vehicle Initiative</a></span></div>
+      </div>
+      <div>
+        <div class="sub-h">Conference Co-organiser</div>
+        <div class="ei"><span class="ei-yr">2024</span><span><a href="http://www.icnsc2024.cn/" target="_blank">IEEE ICNSC</a></span></div>
+        <div class="ei"><span class="ei-yr">2018</span><span><a href="https://lipn.univ-paris13.fr/~cerin/sc2iovsoca2018.html" target="_blank">5th Int. Conf. on Internet of Vehicles (IOV)</a></span></div>
+        <div class="ei"><span class="ei-yr">2016</span><span><a href="http://secon2016.ieee-secon.org/" target="_blank">IEEE SECON</a>, London</span></div>
+        <div class="ei"><span class="ei-yr">2015</span><span><a href="http://users.sussex.ac.uk/~zs70/cfp/autoiot" target="_blank">IEEE Auto-IoT Workshop</a>, Milan</span></div>
+        <div class="ei"><span class="ei-yr">2015</span><span><a href="http://2015.cloudcom.org/" target="_blank">IEEE CloudCom</a> · <a href="http://www.cybermatics.org/SWC2015/Workshops/CV2N.html" target="_blank">CV2N</a> · <a href="http://cse.stfx.ca/~hpcc2015/" target="_blank">HPCC</a> · QSHINE · SWANSITY</span></div>
+        <div class="ei"><span class="ei-yr">2014</span><span>IEEE WiVeC</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Prof. Zhengguo Sheng · University of Sussex · © 2026 &nbsp;·&nbsp;
+    <a href="https://scholar.google.com/citations?user=bRzhl0oAAAAJ" target="_blank">Google Scholar</a> &nbsp;·&nbsp;
+    <a href="https://dblp.org/pid/55/3503.html" target="_blank">DBLP</a>
+  </footer>
+</div>
+<script>
+const J=[
+  {n:105,t:"CATwin-IDS: Context-Aware Intrusion Detection System for Both In-Vehicle and External-Vehicle Networks via Digital Twin",a:"C. Liu, Y. Zhang, Z. Xue, Z. Sheng, J. Kang and G. Han",v:"IEEE Transactions on Intelligent Transportation Systems, 2026",g:["v2x"],l:"files/2026_ITS_CATwin_IDS_Digital_Twin"},
+  {n:104,t:"Digital Twin based Reinforcement Learning for Energy Exchange among Electric Vehicles and Base Stations in a Disaster-affected Region",a:"F. Ayaz, M. Nekovee, Z. Sheng and N. Saeed",v:"IEEE Transactions on Intelligent Transportation Systems, 2025",g:["v2x","edge"]},
+  {n:103,t:"Fuzzy Neural Network Enhanced Information Fusion for Multi-model Action Recognition",a:"H. Sun, G. Wei and Z. Sheng",v:"IEEE Internet of Things Journal, 2025",g:["iot"],l:"https://ieeexplore.ieee.org/document/11146541"},
+  {n:102,t:"Joint Fuel-Efficient Vehicle Platooning and Data Transmission Scheduling for MEC-Enabled Cooperative Vehicle-Infrastructure Systems",a:"J. Zhou, M. Wang, D. Tian, X. Duan, Y. Shao, Z. Sheng and V. Leung",v:"IEEE Transactions on Intelligent Vehicles, 2024",g:["v2x","edge"]},
+  {n:101,t:"Efficient Robust Model Predictive Control for Behaviorally Stable Vehicle Platoons",a:"P. Zhang, D. Tian, J. Zhou, X. Duan, Z. Sheng, D. Zhao, D. Cao and L. Bi",v:"IEEE Transactions on Intelligent Vehicles, 2024",g:["v2x"]},
+  {n:100,t:"On the Optimal Design of Fully Identifiable Next-Generation In-Vehicle Networks",a:"A. Ibraheem, Z. Sheng and G. Parisis",v:"Computer Communications, Volumes 226–227, 2024",g:["v2x"]},
+  {n:99,t:"Secure Data Sharing for Consortium Blockchain-Enabled Vehicular Social Networks",a:"C. Ming, D. Han, H. Liu, K. Li, M. Tang, C. Chang, F. Ayaz, Z. Sheng and Y. Guan",v:"IEEE Transactions on Vehicular Technology, 2024",g:["blockchain","v2x"]},
+  {n:98,t:"Efficient Robust Control of Mixed Platoon for Improving Fuel Economy and Ride Comfort",a:"P. Zhang, D. Tian, J. Zhou, X. Duan, Z. Sheng, D. Zhao and D. Cao",v:"IEEE Transactions on Vehicular Technology, 2024",g:["v2x"]},
+  {n:97,t:"Traffic prediction for 5G: A deep learning approach based on lightweight hybrid attention networks",a:"J. Su, H. Cai, Z. Sheng, A. Liu and A. Baz",v:"Digital Signal Processing, 2024",g:["v2x"]},
+  {n:96,t:"Distributed Multi-Agent Reinforcement Learning for Collaborative Path Planning and Scheduling in Blockchain-Based Cognitive Internet of Vehicles",a:"H. Chang, Y. Liu and Z. Sheng",v:"IEEE Transactions on Vehicular Technology, 2023",g:["blockchain","v2x"]},
+  {n:95,t:"A Novel Hierarchical Tree-DCNN Structure for Unbalanced Data Diagnosis in Microelectronic Manufacturing Process",a:"Y. Zeng, Y. Mei, Y. Hu and Z. Sheng",v:"IEEE Transactions on Instrumentation & Measurement, 2023",g:["iot"]},
+  {n:94,t:"Unknown Tag Identification Protocol Based on Collision Slot Resolution in Large-Scale and Battery-Less RFID System",a:"J. Su, J. Zhou, Z. Sheng, A. X. Liu, S. Yu and M. Jiang",v:"IEEE Sensors Journal, 2023",g:["rfid","iot"]},
+  {n:93,t:"A Cross-Domain Wi-Fi-based Gesture Recognition System For Digital Twins",a:"J. Su, Q. Mao, Z. Liao, Z. Sheng, C. Huang, and X. Zhang",v:"IEEE Journal on Selected Areas in Communications, 2023",g:["iot"]},
+  {n:92,t:"Joint Energy-Efficiency Communication Optimization and Perimeter Traffic Flow Control for Multi-Region LTE-V2V Networks",a:"J. Zhou, G. Qu, D. Tian, Z. Sheng, X. Duan, Y. Guan, and V. Leung",v:"IEEE Transactions on Mobile Computing, 2023",g:["v2x"]},
+  {n:91,t:"Privacy-preserving Proxy Re-encryption with Decentralized Trust Management for MEC-empowered VANETs",a:"X. Han, D. Tian, J. Zhou, X. Duan, Z. Sheng and V. Leung",v:"IEEE Transactions on Intelligent Vehicles, 2023",g:["v2x","edge","blockchain"]},
+  {n:90,t:"A survey of security, privacy and trust issues in vehicular computation offloading and their solutions using blockchain",a:"S. Fayi and Z. Sheng",v:"Open Research Europe, 2023",g:["blockchain","v2x"],l:"https://open-research-europe.ec.europa.eu/articles/3-110/v1"},
+  {n:89,t:"Reliable Data Transmission Scheduling for UAV-Assisted Air-to-Ground Communications",a:"G. Qu, A. Xie, S. Liu, J. Zhou and Z. Sheng",v:"IEEE Transactions on Vehicular Technology, 2023",g:["v2x"]},
+  {n:88,t:"Joint Optimization of Platoon Control and Resource Scheduling in Cooperative Vehicle-Infrastructure system",a:"P. Zhang, D. Tian, J. Zhou, X. Duan, Z. Sheng, D. Zhao and D. Cao",v:"IEEE Transactions on Intelligent Vehicles, 2023",g:["v2x"]},
+  {n:87,t:"Energy-Efficiency Optimization with Model Convexification for Wireless Ad Hoc Networks with Multi-Packet Reception Capability",a:"J. Zhou, D. Tian, G. Qiu, Z. Sheng, X. Duan and V. Leung",v:"IEEE Transactions on Mobile Computing, 2023",g:["v2x","edge"]},
+  {n:86,t:"Joint Service Caching and Computation Offloading Scheme Based on Deep Reinforcement Learning in Vehicular Edge Computing Systems",a:"Z. Xue, C. Liu, C. Liao, G. Han and Z. Sheng",v:"IEEE Transactions on Vehicular Technology, 2023",g:["v2x","edge"]},
+  {n:85,t:"Identifying RFID Tags in Collisions",a:"J. Su, Z. Sheng, C. Huang, G. Li, A. X. Liu and Z. Fu",v:"IEEE/ACM Transactions on Networking, 2022",g:["rfid"]},
+  {n:84,t:"Cooperative Computation Offloading in Blockchain-Based Vehicular Edge Computing Networks",a:"P. Lang, D. Tian, X. Duan, J. Zhou, Z. Sheng and V. C. M. Leung",v:"IEEE Transactions on Intelligent Vehicles, vol. 7, no. 3, pp. 783-798, Sept. 2022",g:["blockchain","v2x","edge"]},
+  {n:83,t:"Blockchain-Empowered AI for 6G-Enabled Internet of Vehicles",a:"F. Ayaz, Z. Sheng, D. Tian, M. Nekovee and N. Saeed",v:"Electronics, 11(20), 3339, 2022",g:["blockchain","v2x"],l:"https://www.mdpi.com/2079-9292/11/20/3339"},
+  {n:82,t:"Human Activity Recognition Using Self-powered Sensors Based on Multilayer Bi-directional Long Short-Term Memory Networks",a:"J. Su, Z. Liao, Z. Sheng, A. X. Liu, D. Singh and H.-N. Lee",v:"IEEE Sensors Journal, 2022",g:["iot"]},
+  {n:81,t:"Blockchain-Enabled Online Traffic Congestion Duration Prediction in Cognitive Internet of Vehicles",a:"H. Chang, Y. Liu and Z. Sheng",v:"IEEE Internet of Things Journal, 2022",g:["blockchain","v2x"]},
+  {n:80,t:"Decentralized Robust Control for Vehicle Platooning Subject to Uncertain Disturbances via Super-Twisting Second-Order Sliding-Mode Observer Technique",a:"J. Zhou, D. Tian, Z. Sheng, X. Duan, G. Qu, D. Cao and X. Shen",v:"IEEE Transactions on Vehicular Technology, 2022",g:["v2x"]},
+  {n:79,t:"Weighted Energy Efficiency Maximization for a UAV-Assisted Multi-Platoon Mobile Edge Computing System",a:"X. Duan, Y. Zhou, J. Zhou, Z. Sheng and X. Shen",v:"IEEE Internet of Things Journal, 2022",g:["edge","v2x"]},
+  {n:78,t:"Robust Min-Max Model Predictive Vehicle Platooning with Causal Disturbance Feedback",a:"J. Zhou, D. Tian, Z. Sheng, X. Duan, G. Qu, D. Zhao, D. Cao and X. Shen",v:"IEEE Transactions on Intelligent Transportation Systems, 2022",g:["v2x"]},
+  {n:77,t:"A Blockchain based Federated Learning for Message Dissemination in Vehicular Networks",a:"F. Ayaz, Z. Sheng, D. Tian and Y. Guan",v:"IEEE Transactions on Vehicular Technology, 2021",g:["blockchain","v2x"]},
+  {n:76,t:"Coexistence and Interference Mitigation for WPANs and WLANs from Traditional Approaches to Deep Learning: A Review",a:"D. Chen, Y. Zhuang, J. Huai, X. Sun, X. Yang, M. Javed, J. Brown, Z. Sheng and J. Thompson",v:"IEEE Sensors Journal, 2021",g:["iot"]},
+  {n:75,t:"Reliability-Guaranteed Admission Control for Mobile Computation Offloading under Nakagami Fading Channel",a:"G. Qu, J. Zhou, Z. Sheng, H. Yu and Y. Ren",v:"IEEE Wireless Communications Letters, 2021",g:["edge"]},
+  {n:74,t:"Two-layer Distributed Content Caching for Infotainment Applications in VANETs",a:"Z. Xue, Y. Liu, G. Han, F. Ayaz, Z. Sheng and Y. Wang",v:"IEEE Internet of Things Journal, 2021",g:["v2x","edge"]},
+  {n:73,t:"Joint Communication and Computation Resource Scheduling of a UAV-Assisted Mobile Edge Computing System for Platooning Vehicles",a:"Y. Liu, J. Zhou, D. Tian, Z. Sheng, X. Duan, G. Qiu and V. Leung",v:"IEEE Transactions on Intelligent Transportation Systems, 2021",g:["v2x","edge"]},
+  {n:72,t:"An efficient missing tag identification approach in RFID collisions",a:"J. Su, Z. Sheng, A. Liu, Z. Fu and C. Huang",v:"IEEE Transactions on Mobile Computing, 2021",g:["rfid"]},
+  {n:71,t:"Distributed Task Offloading Optimization with Queueing Dynamics in Multi-Agent Mobile-Edge Computing Networks",a:"J. Zhou, D. Tian, Z. Sheng, X. Duan and X. Shen",v:"IEEE Internet of Things Journal, 2021",g:["edge","iot"]},
+  {n:70,t:"Joint Mobility, Communication and Computation Optimization for UAVs in Air-Ground Cooperative Networks",a:"J. Zhou, D. Tian, Z. Sheng, X. Duan and X. Shen",v:"IEEE Transactions on Vehicular Technology, 2021",g:["v2x","edge"]},
+  {n:69,t:"Agent-Based Spectrum Management Scheme in Satellite Communication Systems",a:"F. Li, K. Lam, Z. Sheng, W. Lu, X. Liu and L. Wang",v:"IEEE Transactions on Vehicular Technology, 2021",g:["v2x"]},
+  {n:68,t:"Robust Cooperative Communication Optimization for Multi-UAV-Aided Vehicular Networks",a:"S. Zhang, J. Zhou, D. Tian, Z. Sheng, X. Duan and V. Leung",v:"IEEE Wireless Communications Letters, 2020",g:["v2x"]},
+  {n:67,t:"Reliability-aware Joint Optimization for Cooperative Vehicular Communication and Computing",a:"X. Han, D. Tian, Z. Sheng, X. Duan, J. Zhou, W. Hao, K. Long, M. Chen and V. Leung",v:"IEEE Transactions on Intelligent Transportation Systems, 2020",g:["v2x","edge"]},
+  {n:66,t:"A Proof-of-Quality-Factor (PoQF) based Blockchain and Edge Computing for Vehicular Message Dissemination",a:"F. Ayaz, Z. Sheng, D. Tian and Y. Guan",v:"IEEE Internet of Things Journal, 2020",g:["blockchain","v2x","edge"]},
+  {n:65,t:"Capture-aware Identification of Mobile RFID Tags with Unreliable Channels",a:"J. Su, Z. Sheng, A. Liu, Y. Han and Y. Chen",v:"IEEE Transactions on Mobile Computing, 2020",g:["rfid"]},
+  {n:64,t:"A Partitioning Approach to RFID Identification",a:"J. Su, A. Liu, Z. Sheng and Y. Chen",v:"IEEE/ACM Transactions on Networking, 2020",g:["rfid"]},
+  {n:63,t:"A time and energy saving based frame adjustment strategy (TES-FAS) tag identification algorithm for UHF RFID systems",a:"J. Su, Z. Sheng, A. Liu, Z. Fu and Y. Chen",v:"IEEE Transactions on Wireless Communications, 2020",g:["rfid"]},
+  {n:62,t:"From M-ary Query to Bit Query: a new strategy for efficient large-scale RFID identification",a:"J. Su, Y. Chen, Z. Sheng, Z. Huang and A. Liu",v:"IEEE Transactions on Communications, 2020",g:["rfid"]},
+  {n:61,t:"Advances and Emerging Challenges in Cognitive Internet-of-Things",a:"F. Li, K. Lam, X. Li, Z. Sheng, J. Hua and L. Wang",v:"IEEE Transactions on Industrial Informatics, 2019",g:["iot"]},
+  {n:60,t:"A Group-based Binary Splitting Algorithm For UHF RFID Anti-collision Systems",a:"J. Su, Z. Sheng, A. Liu, Y. Han and R. Chen",v:"IEEE Transactions on Communications, 2019",g:["rfid"]},
+  {n:59,t:"A Q-Learning Approach with Collective Contention Estimation for Bandwidth-efficient and Fair Access Control in IEEE 802.11p Vehicular Networks",a:"A. Pressas, Z. Sheng, F. Ali and D. Tian",v:"IEEE Transactions on Vehicular Technology, vol. 68, no. 9, pp. 9136-9150, Sept. 2019",g:["v2x"]},
+  {n:58,t:"Reliability-Optimal Cooperative Communication and Computing in Connected Vehicle Systems",a:"J. Zhou, D. Tian, Y. Wang, Z. Sheng, X. Duan and V. Leung",v:"IEEE Transactions on Mobile Computing, 2019",g:["v2x","edge"]},
+  {n:57,t:"Channel Access Optimization with Adaptive Congestion Pricing for Cognitive Vehicular Networks: An Evolutionary Game Approach",a:"D. Tian, J. Zhou, Y. Wang, Z. Sheng, X. Duan and V. Leung",v:"IEEE Transactions on Mobile Computing, 2019",g:["v2x"]},
+  {n:56,t:"ReFIoV: A Novel Reputation Framework for Information-Centric Vehicular Applications",a:"N. Magaia and Z. Sheng",v:"IEEE Transactions on Vehicular Technology, vol. 68, no. 2, pp. 1810-1823, 2019",g:["v2x"]},
+  {n:55,t:"Fast Splitting Based Tag Identification Algorithm For Anti-collision in UHF RFID System",a:"J. Su, Z. Sheng, L. Xie and G. Li",v:"IEEE Transactions on Communications, vol. 67, no. 3, pp. 2527-2538, 2019",g:["rfid"]},
+  {n:54,t:"Wireless Acoustic Sensor Networks and Edge Computing for Rapid Acoustic Monitoring",a:"Z. Sheng, S. Pfersich, A. Eldridge, J. Zhou, D. Tian and V. Leung",v:"IEEE/CAA Journal of Automatica Sinica, vol. 6, no. 1, pp. 64-74, Jan. 2019",g:["iot","edge"]},
+  {n:53,t:"Reliability-oriented Optimization of Computation Offloading for Cooperative Vehicle-Infrastructure Systems",a:"J. Zhou, D. Tian, Y. Wang, Z. Sheng, X. Duan and V. Leung",v:"IEEE Signal Processing Letters, vol. 26, no. 1, pp. 104-108, Jan. 2019",g:["v2x","edge"]},
+  {n:52,t:"Energy Efficient Tag Identification Algorithms For RFID: Survey, Motivation And New Design",a:"J. Su, Z. Sheng, V. Leung and Y. Chen",v:"IEEE Wireless Communications Magazine, 2019",g:["rfid"]},
+  {n:51,t:"An effective fuel level data cleaning and repairing method for vehicle monitor platform",a:"D. Tian, Y. Zhu, X. Duan, J. Hu, Z. Sheng, M. Chen, J. Wang and Y. Wang",v:"IEEE Transactions on Industrial Informatics, vol. 15, no. 1, pp. 410-422, Jan. 2019",g:["v2x"]},
+  {n:50,t:"A multi-hop routing protocol for video transmission in IoVs based on cellular attractor selection",a:"D. Tian, C. Zhang, X. Duan, Y. Wang, J. Wang and Z. Sheng",v:"Future Generation Computer Systems, Jan. 2019",g:["v2x","iot"]},
+  {n:49,t:"ePRIVO: An enhanced PRIvacy-preserVing Opportunistic routing protocol for Vehicular Delay-Tolerant Networks",a:"N. Magaia, C. Borrego, P. Pereira and Miguel Correia",v:"IEEE Transactions on Vehicular Technology, vol. 67, no. 11, pp. 11154-11168, Nov. 2018",g:["v2x"]},
+  {n:48,t:"Q-Learning-Based Dynamic Spectrum Access in Cognitive Industrial Internet of Things",a:"F. Li, K. Lam, Z. Sheng, X. Zhang, K. Zhao and L. Wang",v:"ACM/Springer Mobile Networks and Applications, Volume 23 Issue 6, December 2018",g:["iot"]},
+  {n:47,t:"Resource Allocation for Cache-enabled Cloud-based Small Cell Networks",a:"X. Li, X. Wang, Z. Sheng, H. Zhou and V. Leung",v:"Elsevier Computer Communications, Volume 127, Pages 20-29, 2018",g:["edge"]},
+  {n:46,t:"A Distributed Position-Based Protocol for Emergency Messages Broadcasting in Vehicular Ad Hoc Networks",a:"D. Tian, C. Liu, X. Duan, Z. Sheng, N. Qiang, M. Chen and V. Leung",v:"IEEE Internet of Things Journal, vol. 5, no. 2, April 2018",g:["v2x","iot"]},
+  {n:45,t:"REPSYS: A robust and distributed incentive scheme for collaborative caching and dissemination in content-centric cellular-based Vehicular Delay-Tolerant Networks",a:"N. Magaia, Z. Sheng, P. Pereira and M. Correia",v:"IEEE Wireless Communications Magazine, 2018",g:["v2x"]},
+  {n:44,t:"Optimal epidemic information dissemination in uncertain dynamic environment",a:"D. Tian, Z. Dai, J. Zhou, Z. Sheng, M. Chen, N. Qiang and V. Leung",v:"IEEE Wireless Communications Letters, 2018",g:["v2x"]},
+  {n:43,t:"Delay Analysis and Time-Critical Protocol Design for In-Vehicle Power Line Communication Systems",a:"Z. Sheng, D. Tian, V. Leung and G. Bansal",v:"IEEE Transactions on Vehicular Technology, vol. 67, no. 1, pp. 3-16, Jan. 2018",g:["v2x"],l:"http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8169126"},
+  {n:42,t:"Towards energy and resource efficient Internet-of-Things: a design principle combining computation, communications and protocols",a:"Z. Sheng, D. Tian and V. Leung",v:"IEEE Communications Magazine, 2018",g:["iot"]},
+  {n:41,t:"Performance Analysis of Routing Protocol for Low Power and Lossy Networks (RPL) in Large Scale Networks",a:"X. Liu, Z. Sheng, C. Yin, F. Ali and D. Roggen",v:"IEEE Internet of Things Journal, 2017",g:["iot"]},
+  {n:40,t:"From Cellular Decision Making to Adaptive Handoff in Heterogeneous Wireless Networks",a:"D. Tian, J. Wei, J. Zhou, Z. Sheng, M. Chen, Q. Ni and V. Leung",v:"IEEE Wireless Communications Letters, 2017",g:["v2x"]},
+  {n:39,t:"A Microbial Inspired Routing Protocol for VANETs",a:"D. Tian, K. Zheng, J. Zhou, X. Duan, Y. Wang, Z. Sheng and Q. Ni",v:"IEEE Internet of Things Journal, 2017",g:["v2x","iot"]},
+  {n:38,t:"Self-organized Relay Selection for Cooperative Transmission in Vehicular Ad-hoc Networks",a:"D. Tian, J. Zhou, Z. Sheng, M. Chen, Q. Ni and V. Leung",v:"IEEE Transactions on Vehicular Technology, vol. 66, no. 10, pp. 9534-9549, Oct. 2017",g:["v2x"]},
+  {n:37,t:"Raptor Code-enabled Reliable Data Transmission for In-vehicle Power Line Communication Systems with Impulsive Noise",a:"Z. Xu, C. Yang, Z. Tan and Z. Sheng",v:"IEEE Communications Letters, vol. 21, no. 10, pp. 2154-2157, Oct. 2017",g:["v2x"]},
+  {n:36,t:"Analytical model of spread of epidemics in open finite regions",a:"D. Tian, C. Liu, Z. Sheng, M. Chen and Y. Wang",v:"IEEE Access, vol. 5, pp. 9673-9681, 2017",g:[]},
+  {n:35,t:"Break-taking behaviour pattern of long-distance freight vehicles based on GPS trajectory data",a:"D. Tian, X. Shan, Z. Sheng, Y. Wang, W. Tang and J. Wang",v:"IET Intelligent Transport Systems, vol. 11, no. 6, pp. 340-348, 2017",g:["v2x"]},
+  {n:34,t:"A collision-tolerant based anti-collision algorithm for large scale RFID system",a:"J. Su, Z. Sheng and L. Xie",v:"IEEE Communications Letters, vol. 21, no. 7, pp. 1517-1520, July 2017",g:["rfid"]},
+  {n:33,t:"An Adaptive Fusion Strategy for Distributed Information Estimation Over Cooperative Multi-Agent Networks",a:"D. Tian, J. Zhou and Z. Sheng",v:"IEEE Transactions on Information Theory, Vol. 63, No. 5, May 2017",g:[]},
+  {n:32,t:"Topology Design and Cross-layer Optimization for Wireless Body Sensor Networks",a:"Y. Zhou, Z. Sheng, C. Mahapatra, V. Leung and P. Servati",v:"Elsevier Ad Hoc Networks, Volume 59, 1 May, Pages 48-62, 2017",g:["iot"]},
+  {n:31,t:"Optimal Power control in Green Wireless Sensor Networks with Wireless Energy Harvesting, Wake-up Radio and Transmission control",a:"C. Mahapatra, Z. Sheng, P. Kamalinejad, V. C. M. Leung and S. Mirabbasi",v:"IEEE Access, vol. 5, pp. 501-518, 2017",g:["iot"],l:"http://ieeexplore.ieee.org/document/7801070/"},
+  {n:30,t:"Performance Evaluation of Networking Protocols for Connected Vehicles",a:"P. Andreas, M. Ozpolat, Z. Sheng and F. Ali",v:"International Journal of Vehicular Telematics and Infotainment Systems (IJVTIS), 1(1), 1-14, 4 Jan. 2017 (Invited)",g:["v2x"]},
+  {n:29,t:"Swarm Intelligence Algorithm Inspired by Route Choice Behavior",a:"D. Tian, J. Hu, Z. Sheng, Y. Wang, J. Ma and J. Wang",v:"Elsevier Journal of Bionic Engineering, 2016",g:[]},
+  {n:28,t:"Learning to Be Energy-Efficient in Cooperative Networks",a:"D. Tian, J. Zhou, Z. Sheng and N. Qiang",v:"IEEE Communications Letters, vol. 20, no. 12, pp. 2518-2521, 2016",g:[]},
+  {n:27,t:"Idle-slots elimination based binary splitting (ISE-BS) anti-collision algorithm for RFID",a:"J. Su, Z. Sheng, L. Xie and G. Wen",v:"IEEE Communications Letters, vol. 20, no. 12, pp. 2394-2397, Dec. 2016",g:["rfid"]},
+  {n:26,t:"Preference-Based Spectrum Pricing in Dynamic Spectrum Access Networks",a:"F. Li, Z. Sheng, J. Hua and L. Wang",v:"IEEE Transactions on Services Computing, 2016",g:[]},
+  {n:25,t:"Modeling chain collisions in vehicular networks with variable penetration rates",a:"D. Tian, J. Zhou, Y. Wang, Z. Sheng, H. Xia and Z. Yi",v:"Transportation Research Part C: Emerging Technologies, Elsevier, Vol. 69, Pages 36-59, 2016",g:["v2x"]},
+  {n:24,t:"Robust Energy-Efficient MIMO Transmission for Cognitive Vehicular Networks",a:"D. Tian, J. Zhou, Z. Sheng and V. Leung",v:"IEEE Transactions on Vehicular Technology, vol. 65, no. 6, pp. 3845-3859, June 2016",g:["v2x"]},
+  {n:23,t:"Demographic Information Prediction: A Portrait of Smartphone Application Users",a:"Z. Qin, Y. Wang, H. Cheng, Y. Zhou, Z. Sheng and V. Leung",v:"IEEE Transactions on Emerging Topics in Computing, 2016",g:[]},
+  {n:22,t:"Tag-Assisted Social-Aware Opportunistic Device-to-Device Sharing for Traffic Offloading in Mobile Social Networks",a:"X. Wang, Z. Sheng, S. Yang and V. Leung",v:"IEEE Wireless Communications Magazine, vol. 23, no. 4, pp. 60-67, August 2016",g:["iot"]},
+  {n:21,t:"From Cellular Attractor Selection to Adaptive Signal Control for Traffic Networks",a:"D. Tian, J. Zhou, Z. Sheng, Y. Wang and J. Ma",v:"Scientific Reports, Nature, 6, 23048, 2016",g:["v2x"],l:"http://www.nature.com/articles/srep23048"},
+  {n:20,t:"An Effective Frame Breaking Policy for Dynamic Framed Slotted Aloha in RFID",a:"J. Su, Z. Sheng and G. Wen",v:"IEEE Communications Letters, vol. 20, no. 4, pp. 692-695, April 2016",g:["rfid"]},
+  {n:19,t:"A Time Efficient Tag Identification Algorithm Using Dual Prefix Probe Scheme (DPPS)",a:"J. Su, Z. Sheng, G. Wen and V. Leung",v:"IEEE Signal Processing Letters, vol. 23, no. 3, pp. 386-389, March 2016",g:["rfid"]},
+  {n:18,t:"Green Cell Planning and Deployment for Small Cell Networks in Smart Cities",a:"L. Zhou, Z. Sheng, L. Wei, X. Hu, H. Zhao, J. Wei and V. Leung",v:"Elsevier Ad Hoc Networks, Vol. 43, pages 30-42, 2016",g:["iot"]},
+  {n:17,t:"A Multi-channel Medium Access Control Protocol for Vehicular Power Line Communication Systems",a:"Z. Sheng, A. Kenarsari, N. Taherinejad and V. Leung",v:"IEEE Transactions on Vehicular Technology, vol. 65, no. 2, pp. 542-554, Feb. 2016",g:["v2x"]},
+  {n:16,t:"Context-Awareness for Mobile Sensing: A Survey and Future Directions",a:"O. Yurur, C. Liu, Z. Sheng, V. Leung, W. Moreno and K. Leung",v:"IEEE Communications Surveys and Tutorials, vol. 18, no. 1, pp. 68-93, 2016. Highly cited paper",g:["iot"],b:"Highly Cited"},
+  {n:15,t:"Energy Efficient Cooperative Computing in Mobile Wireless Sensor Networks",a:"Z. Sheng, C. Mahapatra, V. Leung, M. Chen and P. Sahu",v:"IEEE Transactions on Cloud Computing, 2015",g:["edge","iot"]},
+  {n:14,t:"CGMP: Cloud-assisted Green Multimedia Processing",a:"Y. Ma, Y. Zhang, Z. Sheng, Z. Sanaei and M. Chen",v:"Multimedia Tools and Applications (MTAP), Springer, March 2015",g:["edge"]},
+  {n:13,t:"Recent Advances in Industrial Wireless Sensor Networks Towards Efficient Management in IoT",a:"Z. Sheng, C. Mahapatra, C. Zhu and V. Leung",v:"IEEE Access, vol. 3, pp. 622-637, 2015",g:["iot"]},
+  {n:12,t:"Lightweight Management of Resource Constrained Sensor Devices in Internet-of-Things",a:"Z. Sheng, H. Wang, C. Yin, X. Hu, S. Yang and V. Leung",v:"IEEE Internet of Things Journal, vol. 2, no. 5, pp. 402-411, Oct. 2015",g:["iot"]},
+  {n:11,t:"Cloud-based Wireless Network: Virtualized, Reconfigurable, Smart Wireless Network to Enable 5G Technologies",a:"M. Chen, L. Hu, Y. Zhang, T. Taleb and Z. Sheng",v:"ACM/Springer Mobile Networks and Applications (MONET), 20: 704, 2015. Highly cited paper",g:["edge"],b:"Highly Cited"},
+  {n:10,t:"Wireless Energy Harvesting for Internet of Things",a:"P. Kamalinejad, C. Mahapatra, Z. Sheng, S. Mirabbasi, V. Leung, and Y. Guan",v:"IEEE Communications Magazine, vol. 53, no. 6, pp. 102-108, June 2015",g:["iot"]},
+  {n:9,t:"Towards Offering More Useful Data Reliably to Mobile Cloud from Wireless Sensor Network",a:"C. Zhu, Z. Sheng, V. Leung, L. Shu and L. T. Yang",v:"IEEE Transactions on Emerging Topics in Computing, vol. 3, no. 1, pp. 84-94, March 2015",g:["iot","edge"]},
+  {n:8,t:"Surfing the Internet-of-Things: Lightweight Access and Control of Wireless Sensor Networks Using Industrial Low Power Protocols",a:"Z. Sheng, C. Zhu, and V. Leung",v:"Industrial Networks and Intelligent Systems, 1(1) e2. December 2014 (Invited paper)",g:["iot"]},
+  {n:7,t:"Connectivity Analysis for Cooperative Vehicular Ad Hoc Networks under Nakagami Fading Channel",a:"R. Chen, Z. Sheng, Z. Zhong, M. Ni, V. Leung, D. Michelson, and M. Hu",v:"IEEE Communications Letters, Vol. 18, Issue 10, pp 1787-1790, October 2014",g:["v2x"]},
+  {n:6,t:"Energy Efficient Relay Selection for Cooperative Relaying in Wireless Multimedia Networks",a:"Z. Sheng, J. Fan, C. Liu, V. Leung, X. Liu and K. Leung",v:"IEEE Transactions on Vehicular Technology, vol.64, no.3, pp.1156-1170, 2014",g:["v2x"]},
+  {n:5,t:"Distributed Cross-layer Optimization in Stochastic Multi-hop Wireless Networks with Cooperative Communications",a:"S. Yang, Z. Sheng, J. Mccann, and K. K. Leung",v:"IEEE Transactions on Mobile Computing, Vol. 13, Issue 10, pp 2269-2282, October 2014",g:[]},
+  {n:4,t:"A Survey on The IETF Protocol Suite for The Internet-of-Things: Standards, Challenges and Opportunities",a:"Z. Sheng, S. Yang, Y. Yu, A. V. Vasilakos, J. Mccann, and K. K. Leung",v:"IEEE Wireless Communication Magazine, vol.20, no.6, pp.91-98, December 2013. Highly cited paper, top 1% ESI",g:["iot"],b:"Highly Cited · Top 1% ESI"},
+  {n:3,t:"Towards Energy-Efficiency in Selfish, Cooperative Networks",a:"C. Liu, J. Fan, Z. Sheng, X. Fan and K. K. Leung",v:"ACM/Springer Mobile Networks and Applications (MONET), Vol. 18, Issue 4, pp 535-552, August 2013",g:[]},
+  {n:2,t:"Power Efficient Decode-and-Forward Cooperative Relaying",a:"Z. Sheng, B. J. Ko and K. K. Leung",v:"IEEE Wireless Communication Letter, vol.1, no.5, pp.444-447, October 2012",g:[]},
+  {n:1,t:"Cooperative Wireless Networks: From Radio to Network Protocol Designs",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"IEEE Communications Magazine, vol.49, no.5, pp.64-69, May 2011",g:[]},
+];
+
+const C=[
+  {n:71,t:"Where Does Frozen-Foundation-Model Accuracy Come From?",a:"Y. Liu, Y. Chen and Z. Sheng",v:"Workshop on Human Activity Sensing Corpus and Applications (HASCA) at the ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp), 2026, China",g:[],aw:"2nd Place Award, Sussex-Huawei Locomotion and Transportation Recognition Challenge 2026"},
+  {n:70,t:"REVS-T: Trust-Tier-Aware Provider Selection for Secure Vehicular Computation Offloading",a:"S. Fayi, F. Ayaz and Z. Sheng",v:"IEEE International Mediterranean Conference on Communications and Networking (MeditCom), Cagliari, Italy, 2026",g:["v2x","edge"]},
+  {n:69,t:"An Empirical Study of Domain Generalization and Test-Time Adaptation on CSI-Bench",a:"Y. Liu and Z. Sheng",v:"IEEE International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC), Singapore, 2026",g:[],l:"https://ieeexplore.ieee.org/document/11711434"},
+  {n:68,t:"GoSchedITS: A High Concurrency and Adaptive Offloading Framework for Intelligent Transport Systems (ITS)",a:"Y. Sheng, B. Liu and Z. Sheng",v:"IEEE Vehicular Networking Conference (VNC), Montreal, Canada, 2026",g:["v2x","edge"]},
+  {n:67,t:"HMS-RWKV: A Hybrid Multi-Scale Model with Spatial-Temporal Adaptive Fusion for Efficient WiFi Sensing",a:"Y. Liu and Z. Sheng",v:"IEEE ICC 2026, Glasgow",g:[]},
+  {n:66,t:"Hybrid MATD3: Bandwidth Optimization for YOLO-Enhanced Semantic Communications in Intelligent Transportation Systems",a:"W. Chen, B. Liu and Z. Sheng",v:"IEEE VPPC 2025, China",g:["v2x"]},
+  {n:65,t:"A Blockchain-Based Reputation-Enhanced Vehicle Selection (REVS) for Computation Offloading",a:"S. Fayi, F. Ayaz and Z. Sheng",v:"IEEE VTC 2025, China",g:["blockchain","v2x"]},
+  {n:64,t:"Efficient Kalman Filter-Enhanced Model Predictive Control for Cooperative Vehicle Platooning",a:"Y. Ji and Z. Sheng",v:"IEEE VTC 2025, China",g:["v2x"]},
+  {n:63,t:"Advanced Salp Swarm Algorithm based Hyper-parameter Optimization for Cell-level Traffic Prediction Model",a:"T. Cai, J. Wen, X. Jiang, Z. Bin, Z. Zhang, Z. Sheng, L. Dong",v:"DOCS 2024, China",g:[]},
+  {n:62,t:"Highly Concurrent Data Processing Design for 5G C-V2X Intelligent Transportation Systems (ITS)",a:"B. Liu, W. Chen, Z. Sheng, A. Barakat and Y. Guan",v:"IEEE/CIC ICCC 2024, China",g:["v2x"]},
+  {n:61,t:"VehicleTalk: Lightweight V2V Network Enabled by Optical Wireless Communication and Sensing",a:"Y. Song, R. Mo, P. Zhang, C. Wang, Z. Sheng and Y. Bing",v:"IEEE VTC 2024, Singapore",g:["v2x"]},
+  {n:60,t:"Anomaly Detection and Classification for SDN-enabled In-Vehicle Network using Network Tomography-based Deep Learning",a:"A. Ibraheem, Z. Sheng and G. Parisis",v:"IEEE WCNC 2024, Dubai",g:["v2x"]},
+  {n:59,t:"Network Tomography-based Anomaly Detection and Localisation in Centralised In-Vehicle Network",a:"A. Ibraheem, Z. Sheng, G. Parisis and D. Tian",v:"IEEE COINS 2023, Germany",g:["v2x"]},
+  {n:58,t:"Enhancing C-V2X Network Connectivity with Distributed Mobility Control",a:"J. Men, Y. Hou, Z. Sheng and T. Chan",v:"IEEE VTC 2023, Florence",g:["v2x"]},
+  {n:57,t:"Multi-Objective Optimization-based Assist-as-needed Controller for Improved Quality of Assistance in Rehabilitation Robotics",a:"K. Widanage, Z. Sheng, H. Chen and Y. Li",v:"IEEE ICORR 2023, Singapore",g:[]},
+  {n:56,t:"Internal Network Monitoring with DNN and Network Tomography for In-Vehicle Networks",a:"A. Ibraheem, Z. Sheng, G. Parisis, J. Zhou and D. Tian",v:"IEEE ICUS 2022, China",g:["v2x"]},
+  {n:55,t:"In-Vehicle Network Delay Tomography",a:"A. Ibraheem, Z. Sheng, G. Parisis and D. Tian",v:"IEEE Globecom 2022, Brazil",g:["v2x"]},
+  {n:54,t:"UAV Integrated Internet-of-Vehicle (IoV) System for Flooding Monitoring and Rescue",a:"B. Liu, F. Ayaz, H. Anh, O. Edwards, Y. Zeng, Z. Sheng, X. Duan and D. Tian",v:"ICAUS 2022",g:["v2x","iot"]},
+  {n:53,t:"Blockchain-enabled FD-NOMA based Vehicular Network with Physical Layer Security",a:"F. Ayaz, Z. Sheng, I. Ho, D. Tian and Z. Ding",v:"IEEE VTC 2022",g:["blockchain","v2x"]},
+  {n:52,t:"Implementing Trajectory Tracking Control Algorithm for Autonomous Vehicles",a:"X. Duan, Q. Wang, D. Tian, J. Zhou, J. Wang, Z. Sheng, D. Zhao and Y. Sun",v:"IEEE ICUS 2021",g:["v2x"],aw:"Best Paper Award"},
+  {n:51,t:"A Dual Mode Privacy-Preserving Scheme Enabled Secure and Anonymous for Edge Computing Assisted Internet of Vehicle Networks",a:"X. Han, D. Tian, X. Tian, Z. Sheng, J. Zhou and V. Leung",v:"ACM DIVANet 2021",g:["v2x","edge"]},
+  {n:50,t:"A Linear Quadratic Gaussian Optimal Control Approach for Train Platoon Formation",a:"D. Tian, J. Li, J. Zhou, X. Duan, Z. Sheng, D. Zhao, W. Hao and K. Long",v:"IEEE ICUS 2021",g:["v2x"]},
+  {n:49,t:"Joint Optimization of Resource Scheduling and Mobility for UAV-Assisted Vehicle Platoons",a:"Y. Liu, J. Zhou, D. Tian, Z. Sheng, X. Duan and G. Qu",v:"IEEE VTC 2021, online",g:["v2x","edge"]},
+  {n:48,t:"Neural Network based Partial Tomography for In-Vehicle Network Monitoring",a:"A. Ibraheem, Z. Sheng, G. Parisis and D. Tian",v:"IEEE ICC Workshop 2021, Montreal",g:["v2x"]},
+  {n:47,t:"Vehicle Fusion Positioning Model based on CSI",a:"Y. Zhao, X. Duan, D. Tian, Z. Sheng and V. Leung",v:"ACM DIVANet 2020, Spain",g:["v2x"]},
+  {n:46,t:"A Voting Blockchain based Message Dissemination in Vehicular Ad-Hoc Networks (VANETs)",a:"F. Ayaz, Z. Sheng, D. Tian, Y. Guan and V. Leung",v:"IEEE ICC 2020, Dublin",g:["blockchain","v2x"]},
+  {n:45,t:"A Multi-object Detection Method Based on Connected Vehicles",a:"X. Duan, Y. Wang, X. Wang, D. Tian, H. Liu, Z. Sheng, V. Leung and Y. Gong",v:"ACM DIVANet 2019, USA",g:["v2x"]},
+  {n:44,t:"Latency and Reliability-aware Joint Optimization for Cooperative Vehicular Computing with Cooperative Communication",a:"X. Han, D. Tian, X. Duan, Z. Sheng, H. Liu, Y. Gong and V. Leung",v:"Canadian Transportation Research Forum 2019, Vancouver",g:["v2x"]},
+  {n:43,t:"Popularity-Prediction-driven Hierarchical Caching in Fog-Cloud based Radio Access Networks",a:"X. Li, X. Wang, Z. Sheng, C. Hu and V. Leung",v:"ACM TURC SIGCOMM China 2019",g:["edge"]},
+  {n:42,t:"Intelligent 5G Vehicular Networks: An Integration of DSRC and mmWave Communications",a:"Z. Sheng, A. Pressas, V. Ocheri, F. Ali, R. Ruddy and Maziar Nekovee",v:"ICTC 5G Workshop 2018, Korea",g:["v2x"]},
+  {n:41,t:"Optimized Anonymity Updating in VANET Based on Information and Privacy Joint Metrics",a:"X. Han, D. Tian, X. Duan, Z. Sheng, Y. Wang and V. Leung",v:"ACM MSWIM 2018, Canada",g:["v2x"]},
+  {n:40,t:"Cooperative Content Transmission for Vehicular Ad Hoc Networks using Robust Optimization",a:"D. Tian, J. Zhou, C. Min, Z. Sheng, Q. Ni and V. Leung",v:"IEEE Infocom 2018, USA",g:["v2x"]},
+  {n:39,t:"Worst-Case Access Delay of HomePlug Green PHY (HPGP) for Delay-Critical In-Vehicle Applications",a:"Z. Sheng, M. Ozpolat, D. Tian, V. Leung and M. Nekovee",v:"IEEE Globecom 2017, Singapore",g:["v2x"]},
+  {n:38,t:"Bit query based M-ary tree protocol for RFID tags identification",a:"J. Su, Y. Chen, Z. Sheng and L. Sun",v:"IEEE Globecom 2017, Singapore",g:["rfid"]},
+  {n:37,t:"Contention-based Learning MAC Protocol for Broadcast Vehicle-to-Vehicle Communication",a:"A. Pressas, Z. Sheng, F. Ali, D. Tian and M. Nekovee",v:"IEEE VNC 2017, Italy",g:["v2x"]},
+  {n:36,t:"The Cooperative Vehicle Infrastructure System Based on Machine Vision",a:"D. Tian, C. Zhang, X. Duan, J. Zhou, Z. Sheng and V. Leung",v:"ACM DIVANet 2017, USA",g:["v2x"]},
+  {n:35,t:"Self-adaptive Beaconing for Vehicular Ad Hoc Networks",a:"D. Tian, J. Zhou, Z. Sheng, M. Chen, Q. Ni and V. Leung",v:"IEEE ICC 2017, Paris",g:["v2x"]},
+  {n:34,t:"Unicast Routing Protocol Based on Attractor Selection Model for Vehicular Ad-Hoc Networks",a:"D. Tian, K. Zheng, Z. Sheng, Q. Ni and Y. Wang",v:"3rd International Conference on Internet of Vehicles 2016, Fiji",g:["v2x"],aw:"Best Paper Award"},
+  {n:33,t:"Beacon-based Opportunistic Scheduling in Wireless Body Area Network",a:"Y. Zhou, Z. Sheng and V. Leung",v:"IEEE EMBC 2016, USA",g:["iot"]},
+  {n:32,t:"Connected Vehicles in Smart Cities: Interworking From Inside Vehicles to Outside",a:"A. Pressas, Z. Sheng, P. Fussey and D. Lund",v:"IEEE SECON Poster/Demo 2016, London, UK",g:["v2x"],aw:"Best Demo Award, 3rd place"},
+  {n:31,t:"Energy-efficient and Distributed Data-aware Clustering Protocol for the Internet-of-Things",a:"C. Mahapatra, Z. Sheng and V. Leung",v:"IEEE CCECE 2016, Vancouver, Canada",g:["iot"]},
+  {n:30,t:"An Efficient Sub-Frame Based Tag Identification Algorithm for UHF RFID Systems",a:"J. Su, Z. Sheng, D. Hong and V. Leung",v:"IEEE ICC 2016, Kuala Lumpur, Malaysia",g:["rfid"]},
+  {n:29,t:"A Survey of In-vehicle Communications: Requirements, Solutions and Opportunities in IoT",a:"Y. huo, W. Tu, Z. Sheng and V. Leung",v:"IEEE WF-IoT Automotive IoT Workshop 2015, Milan, Italy",g:["v2x","iot"]},
+  {n:28,t:"Queuing Enhancements for In-Vehicle Time-Sensitive Streams Using Power Line Communications",a:"Y. huo, Q. Zheng, Z. Sheng and V. Leung",v:"IEEE/CIC ICCC 2015, Shenzhen, China",g:["v2x"]},
+  {n:27,t:"Optimizing RSUs Network Against Cascading Failure",a:"W. Tang, X. Shan, D. Tian, Z. Sheng and X. Xia",v:"Smart World Congress 2015, Beijing, China",g:["v2x"]},
+  {n:26,t:"A survey on mobile sensing based mood-fatigue detection for drivers",a:"W. Tu, L. Wei, W. Hu, Z. Sheng, H. Nicanfar, X. Hu, E. Ngai and V. Leung",v:"EAI Conference on Smart Urban Mobility Services 2015, Toronto, Canada",g:["v2x"]},
+  {n:25,t:"Maximizing Data Credibility Under Budget Constraint for Participatory Sensing",a:"H. Gao, C. Liu, W. Wang, Z. Sheng, A. Chin and Y. Tian",v:"IEEE HPCC 2015, NY, USA",g:["iot"]},
+  {n:24,t:"SSDS-MC: Slice-based Secure Data Storage in Multi-Cloud Environment",a:"X. Liu, P. Xu, Z. Sheng, and X. Shan",v:"Qshine 2015, Taiwan",g:["edge"]},
+  {n:23,t:"Analysis on Connectivity Performance for Vehicular Ad Hoc Networks Subjected to User Behavior",a:"R. Chen, Z. Sheng, Z. Zhong, M. Ni, D. Michelson, and V. Leung",v:"IWCMC 2015, Croatia",g:["v2x"]},
+  {n:22,t:"A Reliable and Energy Efficient IoT Data Transmission Scheme for Smart Cities based on Redundant Residue based Error Correction Coding",a:"C. Mahapatra, Z. Sheng, V. Leung, and T. Stouraitis",v:"SWANSITY Workshop at IEEE SECON, Seattle, June 2015",g:["iot"]},
+  {n:21,t:"SH-CRAN: Hierarchical Framework to Support Mobile Big Data Computing in a Secure Manner",a:"Q. Liu, E. Ngai, X. Hu, Z. Sheng, V. Leung, and J. Yin",v:"ACM MobiHoc Mobidata Workshop 2015, Hangzhou, China",g:["edge"]},
+  {n:20,t:"Radiated Power Scaling Factor and Its Effect on The Secrecy Performance of Multi-user Massive MIMO System",a:"B. Chen, C. Zhu, M. Mukherjee, Z. Sheng, C. Xiong, J. Wei, and V. Leung",v:"ACM MobiHoc Workshop for Mobile Sensing 2015, Hangzhou, China",g:[]},
+  {n:19,t:"Channel Capacity under Measurement-based Model for Cooperative Vehicular Ad Hoc Networks",a:"R. Chen, Z. Sheng, M. Ni, Z. Zhong, and D. Michelson",v:"IEEE AP-S/URSI 2015, Vancouver, Canada",g:["v2x"]},
+  {n:18,t:"A Real-Time MAC Protocol for In-Vehicle Power Line Communications Based on HomePlug GP",a:"R. Antonioli, M. Roff, Z. Sheng, J. Liu, and V. Leung",v:"IEEE VTC 2015, Glasgow, Scotland",g:["v2x"]},
+  {n:17,t:"Demographic Information Prediction Based on Smartphone Application Usage",a:"Z. Qin, Y. Wang, Y. Xia, H. Cheng, Y. Zhou, Z. Sheng and V. Leung",v:"SMARTCOMP 2014, Hong Kong, China",g:[]},
+  {n:16,t:"Sensor Cloud Computing for Vehicular Applications: from Analysis to Practical Implementation",a:"Z. Sheng, X. Hu, P. TalebiFard, V. Leung, R. Chen and Y. Zhou",v:"ACM DIVANet 2014, Montreal, Canada",g:["v2x","edge"]},
+  {n:15,t:"Towards a Service Centric Contextualized Vehicular Cloud",a:"X. Hu, L. Wang, Z. Sheng, P. TalebiFard, L. Zhou and V. Leung",v:"ACM DIVANet 2014, Montreal, Canada",g:["v2x","edge"]},
+  {n:14,t:"SAfeDJ Community: Situation-Aware In-Car Music Delivery for Safe Driving",a:"X. Hu, J. Deng, W. Hu, G. Fotopoulos, E. C.-H. Ngai, Z. Sheng, M. Liang, X. Li, V. Leung and S. Fels",v:"ACM MobiCom 2014 poster, Maui, Hawaii",g:["v2x"]},
+  {n:13,t:"Demonstration of Multi-Channel Medium Access Control Protocol in VPLC using OMNeT",a:"Z. Sheng, M. Roff, R. Antonioli and V. Leung",v:"IEEE WiVEC 2014, co-located with VTC2014-Fall",g:["v2x"]},
+  {n:12,t:"An Efficient ZigBee-WebSocket based M2M Environmental Monitoring System",a:"K. Shuang, X. Shan, Z. Sheng and C. Zhu",v:"IEEE PICOM 2014, Dalian, China",g:["iot"]},
+  {n:11,t:"Fair and Energy-efficient Cooperative Relaying with Selfish Nodes",a:"J. Fan, Z. Sheng, C. Liu, A. V. Vasilakos and X. Fan",v:"IEEE ICC 2013, Budapest, Hungary",g:[]},
+  {n:10,t:"Power Efficiency of Decode-And-Forward Cooperative Relaying",a:"Z. Sheng, Bong-Jun Ko, Swami Ananthram, Kang-Won Lee, and Kin K. Leung",v:"MILCOM 2010, San Jose, CA",g:[]},
+  {n:9,t:"Analysis and Algorithms for Power Allocation in Decode-and-Forward Cooperative Relaying",a:"Z. Sheng, B. J. Ko, A. Swami, K. W. Lee and K. K. Leung",v:"ACITA 2010, London, UK",g:[]},
+  {n:8,t:"Error Performance Bounds for Routing Algorithms in Wireless Cooperative Networks",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"CHINACOM 2010, Beijing, China (Invited paper)",g:[]},
+  {n:7,t:"Transmission Capacity of Decode-and-Forward Cooperation in Overlaid Wireless Networks",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"IEEE ICC 2010, Cape Town, South Africa",g:[]},
+  {n:6,t:"Transmission Delay Analysis with Finite Coding Length in Wireless Cooperative Networks",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"IEEE Globecom 2009, Hawaii, USA",g:[]},
+  {n:5,t:"Multi-User Diversity for Secrecy in Cooperative Communication Links",a:"D. L. Goeckel, Z. Ding, Z. Sheng, S. Vasudevan, K. K. Leung and D. Towsley",v:"ACITA 2009, Maryland, USA",g:[]},
+  {n:4,t:"A Stochastic Geometry Approach to Transmission Capacity in Wireless Cooperative Networks",a:"Z. Sheng, D. L. Goeckel, K. K. Leung and Z. Ding",v:"IEEE PIMRC 2009, Tokyo, Japan",g:[]},
+  {n:3,t:"Interference Subtraction with Supplementary Cooperation in Wireless Cooperative Networks",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"IEEE ICC 2009, Dresden, Germany",g:[]},
+  {n:2,t:"Distributed and Power Efficient Routing in Wireless Cooperative Networks",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"IEEE ICC 2009, Dresden, Germany",g:[]},
+  {n:1,t:"On the Design of a Quality-of-Service Driven Routing Protocol for Wireless Cooperative Networks",a:"Z. Sheng, Z. Ding and K. K. Leung",v:"IEEE VTC 2008, Singapore (also MSc project)",g:[]},
+];
+
+const B=[
+  {n:6,t:"AI and Blockchain for Wireless Communications",a:"F. Ayaz and Z. Sheng (editors)",v:"Academic Press, Elsevier, 2026",l:"https://shop.elsevier.com/books/ai-and-blockchain-for-wireless-communications/ayaz/978-0-443-34009-3"},
+  {n:5,t:"Connected Vehicle Systems: Communication, Data, and Control",a:"Z. Sheng (editor)",v:"CRC Press, Taylor & Francis Group, ISBN 9781138035874, 2017",l:"https://www.crcpress.com/Connected-Vehicle-Systems-Communication-Data-and-Control/Wang-Tian-Sheng-Jian/p/book/9781138035874"},
+  {n:4,t:"From Internet of Things to Smart Cities: Enabling Technologies",a:"Z. Sheng (book chapters author)",v:"CRC Press, Taylor & Francis Group, ISBN 9781498773782, 2017",l:"https://www.crcpress.com/From-Internet-of-Things-to-Smart-Cities-Enabling-Technologies/Sun-Ahmad-Wang/p/book/9781498773782"},
+  {n:3,t:"Cyber Physical Systems: Architectures, Protocols and Applications",a:"Z. Sheng (book chapters author)",v:"CRC Press, Taylor & Francis Group, ISBN 9781482208979, 2015",l:"https://www.crcpress.com/Cyber-Physical-Systems-Architectures-Protocols-and-Applications/Liu-Zhang/p/book/9781482208979"},
+  {n:2,t:"Energy Efficient Cooperative Wireless Communication and Networks",a:"Z. Sheng (editor) and C. H. Liu",v:"CRC Press, Taylor & Francis Group, ISBN 9781482238211, USA, 2014",l:"http://www.crcpress.com/product/isbn/9781482238211"},
+  {n:1,t:"Cooperative Wireless Networks: From Radio to Network Protocol Designs",a:"Z. Sheng (Monograph)",v:"Scholars' Press Publishing, ISBN 978-3-639-51633-3, Germany, 2013",l:"http://www.amazon.com/Cooperative-Wireless-Networks-Network-Protocol/dp/3639516338"},
+];
+
+let cf='all';
+function setFilter(f,btn){cf=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyFilters();}
+
+function matches(p,type){
+  const q=document.getElementById('search-input').value.toLowerCase();
+  const inQ=!q||p.t.toLowerCase().includes(q)||p.a.toLowerCase().includes(q)||p.v.toLowerCase().includes(q);
+  if(!inQ)return false;
+  if(cf==='all')return true;
+  if(cf==='journal')return type==='j';
+  if(cf==='conference')return type==='c';
+  if(cf==='books')return type==='b';
+  if(cf==='award')return !!p.aw;
+  return p.g&&p.g.includes(cf);
+}
+
+function card(p){
+  const auth=p.a.replace(/Z\. Sheng/g,'<span class="me">Z. Sheng</span>');
+  const badge=p.b?`<span class="badge badge-cited">${p.b}</span>`:'';
+  const aw=p.aw?`<span class="badge badge-award">🏆 ${p.aw}</span>`:'';
+  const tt=p.l?`<a href="${p.l}" target="_blank">${p.t}</a>`:p.t;
+  return `<div class="pub-card"><div class="pub-num">[${p.n}]</div><div class="pub-body">
+    <div class="pub-title">${tt}${badge}${aw}</div>
+    <div class="pub-authors">${auth}</div>
+    <div class="pub-venue">${p.v}</div>
+  </div></div>`;
+}
+
+function bcard(p){
+  const auth=p.a.replace(/Z\. Sheng/g,'<span class="me">Z. Sheng</span>');
+  const tt=p.l?`<a href="${p.l}" target="_blank">${p.t}</a>`:p.t;
+  return `<div class="book-card"><div class="book-num">[${p.n}]</div><div class="pub-body">
+    <div class="pub-title">${tt}</div>
+    <div class="pub-authors">${auth}</div>
+    <div class="book-meta">${p.v}</div>
+  </div></div>`;
+}
+
+function applyFilters(){
+  const fj=J.filter(p=>matches(p,'j'));
+  const fc=C.filter(p=>matches(p,'c'));
+  const fb=B.filter(p=>matches(p,'b'));
+  const el=document.getElementById('pub-list');
+  el.innerHTML='';
+  if(!fj.length&&!fc.length&&!fb.length){el.innerHTML='<div class="no-results">No publications match your search.</div>';return;}
+
+  if(fj.length&&cf!=='conference'&&cf!=='books'){
+    el.innerHTML+=`<div class="section-header">Journal Papers <span class="section-count">${fj.length}</span></div>`;
+    fj.forEach(p=>el.innerHTML+=card(p));
+  }
+  if(fc.length&&cf!=='journal'&&cf!=='books'){
+    el.innerHTML+=`<div class="section-header">Conference Papers <span class="section-count">${fc.length}</span></div>`;
+    fc.forEach(p=>el.innerHTML+=card(p));
+  }
+  if(fb.length&&(cf==='all'||cf==='books')){
+    el.innerHTML+=`<div class="section-header">Books <span class="section-count">${fb.length}</span></div>`;
+    fb.forEach(p=>el.innerHTML+=bcard(p));
+  }
+  if(cf==='all'||cf==='journal'){
+    el.innerHTML+=`<div class="section-header">Patent &amp; Standard</div>
+    <div class="pub-card"><div class="pub-num">[P2]</div><div class="pub-body">
+      <div class="pub-title">A Method and Embedded Device for Sensing and Fusion Road Side Target Data</div>
+      <div class="pub-authors"><span class="me">Z. Sheng</span></div>
+      <div class="pub-venue">Patent filed, 2025</div></div></div>
+    <div class="pub-card"><div class="pub-num">[P1]</div><div class="pub-body">
+      <div class="pub-title"><a href="https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2015096004" target="_blank">A Method for Configuring a Network Comprising Several Nodes, a Method for Transmitting Data in Said Network, and Corresponding Equipment and Computer Program</a></div>
+      <div class="pub-authors">Z. Sheng et al.</div>
+      <div class="pub-venue">PCT application No. PCT/CN2013/090231, 2015</div></div></div>
+    <div class="pub-card"><div class="pub-num">[S1]</div><div class="pub-body">
+      <div class="pub-title">Co-proposer, "Proposed ToR for Management and Application Enablement WG"</div>
+      <div class="pub-authors"><span class="me">Z. Sheng</span> et al.</div>
+      <div class="pub-venue">OneM2M, Dec. 2012</div></div></div>`;
+  }
+}
+
+applyFilters();
+</script>
+</body>
+</html>

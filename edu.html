@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Research – Prof. Zhengguo Sheng</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0e1a;--surface:#111827;--surface2:#1a2235;--accent:#4fd1c5;--accent2:#f6ad55;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(79,209,197,0.15);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,209,197,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,197,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+  header{padding:3rem 0 2rem;display:flex;align-items:flex-start;gap:3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;animation:fadeUp 0.8s ease both;}
+  .avatar{width:110px;height:110px;border-radius:50%;border:2px solid var(--accent);background:linear-gradient(135deg,#1a2235,#2d3d5a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0;box-shadow:0 0 30px rgba(79,209,197,0.2);text-decoration:none;}
+  .header-info h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.4rem;}
+  .header-info .title{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;}
+  .header-info .sub{color:var(--muted);font-size:0.95rem;}
+
+  nav{display:flex;margin-bottom:3rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp 0.8s 0.1s ease both;}
+  nav a{flex:1;text-align:center;padding:0.75rem 0.5rem;text-decoration:none;color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:all 0.2s;border-right:1px solid var(--border);}
+  nav a:last-child{border-right:none;}
+  nav a:hover,nav a.active{background:var(--surface2);color:var(--accent);}
+
+  .section-header{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent2);border-bottom:2px solid var(--border);padding-bottom:0.6rem;margin:0 0 1.5rem;display:flex;align-items:center;gap:0.75rem;animation:fadeUp 0.8s 0.15s ease both;}
+
+  /* RESEARCH AREAS */
+  .rtags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:3rem;animation:fadeUp 0.8s 0.2s ease both;}
+  .rtag{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;font-size:0.83rem;transition:border-color 0.2s;}
+  .rtag:hover{border-color:rgba(79,209,197,0.4);}
+
+  /* CARDS */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:3rem;animation:fadeUp 0.8s 0.2s ease both;}
+
+  /* LIST ITEMS */
+  .item{display:flex;gap:0.75rem;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;line-height:1.5;}
+  .item:last-child{border-bottom:none;}
+  .item-year{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);min-width:58px;flex-shrink:0;margin-top:2px;}
+  .item-text{flex:1;color:var(--text);}
+  .item-text a{color:var(--accent);text-decoration:none;}
+  .item-text a:hover{text-decoration:underline;}
+
+  footer{border-top:1px solid var(--border);padding:2rem 0;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:1rem;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){header{flex-direction:column;gap:1.5rem;}.header-info h1{font-size:2rem;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <img src="image/Zhengguo.jpg" class="avatar" alt="Prof. Zhengguo Sheng" style="object-fit:cover;width:110px;height:110px;flex-shrink:0;">
+    <div class="header-info">
+      <div class="title">// Research</div>
+      <h1>Zhengguo Sheng</h1>
+      <div class="sub">Dean of Sussex AI Institute · Professor in Advanced Networks and Communications · University of Sussex</div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="work.html">Experience</a>
+    <a href="edu.html" class="active">Research</a>
+    <a href="pub.html">Publications</a>
+    <a href="demo.html">Demos</a>
+    <a href="team.html">Team</a>
+  </nav>
+
+  <!-- RESEARCH AREAS -->
+  <div class="section-header">🔬 Research Areas</div>
+  <div class="rtags">
+    <span class="rtag">🚗 Vehicular Communications (V2X)</span>
+    <span class="rtag">📡 In-Vehicle Networks</span>
+    <span class="rtag">🌐 IoT & Wireless Sensor Networks</span>
+    <span class="rtag">📶 IPv6</span>
+    <span class="rtag">🗜️ Compressed Sensing</span>
+    <span class="rtag">⚡ Energy Harvesting</span>
+    <span class="rtag">🏷️ RFID</span>
+    <span class="rtag">☁️ Sensor Cloud</span>
+    <span class="rtag">📱 Mobile Cloud</span>
+    <span class="rtag">📊 Big Data Management</span>
+    <span class="rtag">🔗 Blockchain Security</span>
+    <span class="rtag">🤖 Edge Computing</span>
+  </div>
+
+  <!-- RESEARCH FUNDING -->
+  <div class="section-header">💰 Research Funding</div>
+  <div class="card">
+    <div class="item"><span class="item-year">2026</span><span class="item-text">HEIF, WiFi-sensing for care home, PI.</span></div>
+    <div class="item"><span class="item-year">2025</span><span class="item-text">KKU Funding – AI-Driven Secure and Cloud-Integrated Energy Management for Vehicular Communications, Co-I.</span></div>
+    <div class="item"><span class="item-year">2025</span><span class="item-text">Industry Funding – RFID tracking system Phase 2, PI.</span></div>
+    <div class="item"><span class="item-year">2024</span><span class="item-text">Industry consultancy in freight innovation and intelligent transportation.</span></div>
+    <div class="item"><span class="item-year">2024</span><span class="item-text">Industry Funding (Connect to Expertise Scheme) – RFID system design and development, PI.</span></div>
+    <div class="item"><span class="item-year">2023–25</span><span class="item-text">Industry KTP – To embed the latest thermo-dynamic modelling to accelerate innovation in renewable refrigeration systems, Co-I.</span></div>
+    <div class="item"><span class="item-year">2023</span><span class="item-text">HEIF 2023 Business Collaboration & Commercialisation – IoT based smart electric vehicle (EV) charging, PI.</span></div>
+    <div class="item"><span class="item-year">2023–25</span><span class="item-text">Royal Academy of Engineering Distinguished International Associates – Blockchain-based Mobility-as-a-Service, Co-I.</span></div>
+    <div class="item"><span class="item-year">2022</span><span class="item-text">HEIF 2022 FROM COVID CRISIS TO NET ZERO – 5G enabled robotic teleoperation, Co-PI.</span></div>
+    <div class="item"><span class="item-year">2022</span><span class="item-text">NERC Discipline Hopping for Environmental Solutions – IoT flood mitigation, PI.</span></div>
+    <div class="item"><span class="item-year">2021</span><span class="item-text">Imperial – Nanyang Technological University Collaboration Fund – Industrial 4.0, Co-I.</span></div>
+    <div class="item"><span class="item-year">2021–25</span><span class="item-text">H2020-MSCA-RISE – <a href="https://www.sussex.ac.uk/research/projects/seeds/" target="_blank">Secure vehicular networks: communications, data caching and blockchain services (SEEDS)</a>, Coordinator (PI).</span></div>
+    <div class="item"><span class="item-year">2020</span><span class="item-text">Royal Society Kan Tong Po International Fellowship – NOMA based Data-Centric Vehicular Networks, PI.</span></div>
+    <div class="item"><span class="item-year">2020–23</span><span class="item-text">Research Grants Council Hong Kong – Distributed Multi-hop C-V2X Self-Optimizing Network, Co-I.</span></div>
+    <div class="item"><span class="item-year">2020</span><span class="item-text">School's HEIF – Blockchain security and robotics for social distancing in childcare, PI.</span></div>
+    <div class="item"><span class="item-year">2019</span><span class="item-text">Research Opportunity Fund (ROF Sussex) – Internet-of-Robot for Elderly Homecare, PI.</span></div>
+    <div class="item"><span class="item-year">2019</span><span class="item-text">Consultant project – IoT gateway for clinic acute transport services, PI.</span></div>
+    <div class="item"><span class="item-year">2019</span><span class="item-text">School's HEIF – V2X impact activity, PI.</span></div>
+    <div class="item"><span class="item-year">2018–19</span><span class="item-text">H2020 European-Pacific Partnership (EPIC) visits – V2X testbed, PI.</span></div>
+    <div class="item"><span class="item-year">2017–19</span><span class="item-text">Royal Society International Exchange – Bionic communications and networking for connected vehicles, PI.</span></div>
+    <div class="item"><span class="item-year">2017–18</span><span class="item-text">EPSRC (EP/P025862/1) – Mission-Critical and Intelligent Communication Protocols for Future Vehicles Using Power Lines, PI.</span></div>
+    <div class="item"><span class="item-year">2017</span><span class="item-text">Asa Briggs Visiting Fellowship, University of Sussex, PI.</span></div>
+    <div class="item"><span class="item-year">2013–15</span><span class="item-text">Postdoctoral Fellowship, funded by Natural Sciences and Engineering Research Council of Canada (<a href="http://nsercdiva.com/" target="_blank">DIVA</a>).</span></div>
+    <div class="item"><span class="item-year">2014</span><span class="item-text"><a href="https://www.auto21.ca/en/" target="_blank">AUTO21</a> Research Grant, funded by The Government of Canada (The Networks of Centres of Excellence program).</span></div>
+    <div class="item"><span class="item-year">2014</span><span class="item-text">USRA Research Grant (for training young researchers from undergraduate level), funded by NSERC, Canada.</span></div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="section-header">🏆 Awards & Honours</div>
+  <div class="card">
+    <div class="item"><span class="item-year">2026</span><span class="item-text">2nd Place Award, Sussex-Huawei Locomotion and Transportation Recognition Challenge 2026.</span></div>
+    <div class="item"><span class="item-year">2025</span><span class="item-text">First Prize, Educational Achievement Award of the Zhejiang Provincial Graduate Education Society.</span></div>
+    <div class="item"><span class="item-year">2022</span><span class="item-text">International Junior Research Associate (IJRA), collaborated with Hanoi University of Science and Technology.</span></div>
+    <div class="item"><span class="item-year">2021</span><span class="item-text">Best Paper Award – "Implementing Trajectory Tracking Control Algorithm for Autonomous Vehicles", IEEE International Conference on Unmanned Systems (ICUS'21).</span></div>
+    <div class="item"><span class="item-year">2021</span><span class="item-text">IEEE Industry Placement Sponsorship, awarded by IEEE Electron Devices Society.</span></div>
+    <div class="item"><span class="item-year">2020</span><span class="item-text">Junior Research Associate (JRA), funded by University of Sussex for summer research internship.</span></div>
+    <div class="item"><span class="item-year">2020</span><span class="item-text">Research poster competition (Blockchain-Enabled Vehicle-to-Vehicle Communications), 2nd winner awarded by University of Sussex.</span></div>
+    <div class="item"><span class="item-year">2018</span><span class="item-text">Promoted as IEEE Senior Membership.</span></div>
+    <div class="item"><span class="item-year">2017</span><span class="item-text"><a href="files/Sussex Impact and Research Awards 2017.pdf">"Emerging Research Award"</a>, University of Sussex.</span></div>
+    <div class="item"><span class="item-year">2017</span><span class="item-text">Award of Fellow of the Higher Education Academy (HEA), UK.</span></div>
+    <div class="item"><span class="item-year">2016</span><span class="item-text">Best Paper Award – "Unicast Routing Protocol Based on Attractor Selection Model for Vehicular Ad-Hoc Networks", 3rd International Conference on Internet of Vehicles 2016.</span></div>
+    <div class="item"><span class="item-year">2016</span><span class="item-text">Best Demo Award (3rd) – "Connected Vehicles in Smart Cities: Interworking From Inside Vehicles to Outside", IEEE SECON 2016.</span></div>
+    <div class="item"><span class="item-year">2015</span><span class="item-text">IEEE Outstanding Service Award, awarded by IEEE CloudCom 2015.</span></div>
+    <div class="item"><span class="item-year">2014</span><span class="item-text">AUTO21 TestDRIVE Competition (Presentation) Award, sponsored by The Networks of Centres of Excellence program, Canada.</span></div>
+    <div class="item"><span class="item-year">2012–13</span><span class="item-text">Retention Bonus Recipient, Orange Outstanding Researcher Award.</span></div>
+    <div class="item"><span class="item-year">2007–11</span><span class="item-text">Studentship of U.S.-U.K. IBM/ITA Project, funded by U.S. Army Research and U.K. Ministry of Defence.</span></div>
+    <div class="item"><span class="item-year">2002–06</span><span class="item-text">Top Grade University People's Scholarship, awarded by The University of Electronic Science and Technology of China.</span></div>
+  </div>
+
+  <footer>
+    Prof. Zhengguo Sheng · University of Sussex · © 2026
+  </footer>
+</div>
+</body>
+</html>

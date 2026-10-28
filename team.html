@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Team – Prof. Zhengguo Sheng</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#0a0e1a;--surface:#111827;--surface2:#1a2235;--accent:#4fd1c5;--accent2:#f6ad55;--text:#e2e8f0;--muted:#94a3b8;--border:rgba(79,209,197,0.15);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;line-height:1.6;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,209,197,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,197,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+  .container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+
+  header{padding:3rem 0 2rem;display:flex;align-items:flex-start;gap:3rem;border-bottom:1px solid var(--border);margin-bottom:3rem;animation:fadeUp 0.8s ease both;}
+  .avatar{width:110px;height:110px;border-radius:50%;border:2px solid var(--accent);background:linear-gradient(135deg,#1a2235,#2d3d5a);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--accent);flex-shrink:0;box-shadow:0 0 30px rgba(79,209,197,0.2);text-decoration:none;}
+  .header-info h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.4rem;}
+  .header-info .title{font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;}
+  .header-info .sub{color:var(--muted);font-size:0.95rem;}
+
+  nav{display:flex;margin-bottom:3rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;animation:fadeUp 0.8s 0.1s ease both;}
+  nav a{flex:1;text-align:center;padding:0.75rem 0.5rem;text-decoration:none;color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace;letter-spacing:0.05em;transition:all 0.2s;border-right:1px solid var(--border);}
+  nav a:last-child{border-right:none;}
+  nav a:hover,nav a.active{background:var(--surface2);color:var(--accent);}
+
+  .section-header{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--accent2);border-bottom:2px solid var(--border);padding-bottom:0.6rem;margin:0 0 1.5rem;display:flex;align-items:center;gap:0.75rem;animation:fadeUp 0.8s 0.15s ease both;}
+
+  /* RESEARCH AREAS */
+  .rtags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:3rem;animation:fadeUp 0.8s 0.2s ease both;}
+  .rtag{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;font-size:0.83rem;transition:border-color 0.2s;}
+  .rtag:hover{border-color:rgba(79,209,197,0.4);}
+
+  /* CARDS */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:3rem;animation:fadeUp 0.8s 0.2s ease both;}
+
+  /* LIST ITEMS */
+  .item{display:flex;gap:0.75rem;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.84rem;line-height:1.5;}
+  .item:last-child{border-bottom:none;}
+  .item-year{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);min-width:58px;flex-shrink:0;margin-top:2px;}
+  .item-text{flex:1;color:var(--text);}
+  .item-text a{color:var(--accent);text-decoration:none;}
+  .item-text a:hover{text-decoration:underline;}
+
+  footer{border-top:1px solid var(--border);padding:2rem 0;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'DM Mono',monospace;margin-top:1rem;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:700px){header{flex-direction:column;gap:1.5rem;}.header-info h1{font-size:2rem;}}
+
+  .members{list-style:none;}
+  .member{padding:1rem 0;border-bottom:1px solid var(--border);}
+  .member:first-child{padding-top:0;}
+  .member:last-child{padding-bottom:0;border-bottom:none;}
+  .member h3{font-size:1rem;font-weight:500;color:var(--text);margin-bottom:0.25rem;}
+  .member p{color:var(--muted);font-size:0.88rem;}
+  nav a:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;}
+  @media(max-width:700px){.container{padding:0 1rem;}nav{flex-wrap:wrap;}nav a{flex:1 0 33.333%;}.card{padding:1.25rem;}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <img src="image/Zhengguo.jpg" class="avatar" alt="Prof. Zhengguo Sheng" style="object-fit:cover;width:110px;height:110px;flex-shrink:0;">
+    <div class="header-info">
+      <div class="title">// Team</div>
+      <h1>Zhengguo Sheng</h1>
+      <div class="sub">Dean of Sussex AI Institute · Professor in Advanced Networks and Communications · University of Sussex</div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="work.html">Experience</a>
+    <a href="edu.html">Research</a>
+    <a href="pub.html">Publications</a>
+    <a href="demo.html">Demos</a>
+    <a href="team.html" class="active" aria-current="page">Team</a>
+  </nav>
+
+  <main>
+  <section aria-label="Current Team Members">
+  <h2 class="section-header">Current Team Members</h2>
+  <div class="card"><ol class="members">
+    <li class="member"><h3>Yuting Shen</h3><p>SNN based mobile computing, 2026-now</p></li>
+    <li class="member"><h3>Zhenan Xiao</h3><p>Network security, 2025-now</p></li>
+    <li class="member"><h3>Yanlin Ji</h3><p>PhD, connected vehicle control and communications, 2024-now</p></li>
+    <li class="member"><h3>Weibo Chen</h3><p>PhD, V2X digital twin, 2023-now</p></li>
+    <li class="member"><h3><a href="https://profiles.sussex.ac.uk/p502696-bo-liu/about" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">Bo Liu</a></h3><p>PhD, V2X communications and computing, 2023-now</p></li>
+    <li class="member"><h3><a href="https://profiles.sussex.ac.uk/p515442-yi-liu/about" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">Yi Liu</a></h3><p>PhD, ISAC, 2023-now</p></li>
+  </ol></div>
+  </section>
+
+  <section aria-label="Graduated Team Members">
+  <h2 class="section-header">Graduated Team Members</h2>
+  <div class="card"><ol class="members">
+    <li class="member"><h3>Dr. Sharifah Yaqoub</h3><p>Assistant Professor, King khalid university, SA</p></li>
+    <li class="member"><h3>Dr. Amani Ibraheem</h3><p>Assistant Professor, King khalid university, SA</p></li>
+    <li class="member"><h3>Dr. Ferheen Ayaz</h3><p>Assistant Professor, University of London, St George, UK</p></li>
+    <li class="member"><h3>Dr. Andreas Pressas</h3><p>TTP, industry, UK</p></li>
+  </ol></div>
+  </section>
+
+  </main>
+  <footer>Prof. Zhengguo Sheng · University of Sussex · © 2026</footer>
+</div>
+</body>
+</html>
